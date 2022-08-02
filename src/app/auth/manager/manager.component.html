@@ -1,0 +1,49 @@
+<section class="w-full h-full absolute top-0 left-0 flex flex-col">
+  <form
+    (ngSubmit)="onSubmit()"
+    #formRef="ngForm"
+    class="w-[80%] max-w-[400px] h-[70%] max-h-[480px] m-auto flex flex-col justify-evenly shadow-xl border border-gray-100 p-4"
+  >
+    <h1 class="text-4xl italic font-semibold mx-auto text-primary-dark-blue">
+      HRIS
+    </h1>
+    <h2 class="text-lg mx-auto">LINE MANAGER</h2>
+    <label for="email">Email</label>
+    <input
+      email
+      ngModel
+      required
+      name="email"
+      type="email"
+      #email="ngModel"
+      class="border-b-2 border-primary-dark-gray focus:outline-none py-1"
+    />
+    <p *ngIf="!email.valid && email.touched" class="italic text-red-600">
+      enter a valid email address
+    </p>
+    <label for="password">Password</label>
+    <input
+      ngModel
+      required
+      minlength="8"
+      name="password"
+      type="password"
+      #password="ngModel"
+      class="border-b-2 border-primary-dark-gray focus:outline-none py-1"
+    />
+    <p *ngIf="!password.valid && password.touched" class="italic text-red-600">
+      enter a valid password
+    </p>
+    <p>Forgotten password?</p>
+    <button
+      type="submit"
+      [disabled]="!formRef.valid"
+      class="text-base bg-primary-dark-blue disabled:cursor-not-allowed disabled:bg-primary-light-brown w-fit px-8 mx-auto text-white py-2"
+    >
+      Sign In
+    </button>
+    <a class="mx-auto italic underline" [routerLink]="'/auth'"
+      >Login as Employee</a
+    >
+  </form>
+</section>
