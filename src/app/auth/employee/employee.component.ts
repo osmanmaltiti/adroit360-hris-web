@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css'],
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeAuthComponent implements OnInit {
   @ViewChild('formRef') employeeForm: NgForm | undefined;
   constructor() {}
 
