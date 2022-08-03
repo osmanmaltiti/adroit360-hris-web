@@ -1,14 +1,15 @@
 <div
   [ngClass]="{ 'dev-border': objectives.type === 'development goal' }"
-  class="w-full relative overflow-x-auto scrollbar-thin lg:scrollbar-thumb-primary-dark-gray radius rounded-l-md lg:rounded-r-md border-2 xl:border-r-2 border-r-0 border-primary-light-blue pr-2 py-4 gap-4 flex flex-row flex-nowrap text-white"
+  class="w-full relative overflow-x-auto scrollbar-thin lg:scrollbar-thumb-primary-dark-gray radius rounded-l-md lg:rounded-r-md border-2 xl:border-r-2 border-r-0 border-primary-light-blue pr-2 py-4 gap-4 flex flex-row flex-nowrap text-white mb-4"
 >
   <!-- TASK DETAILS -->
-  <p
+  <div
     [ngClass]="{ dev: objectives.type === 'development goal' }"
-    class="sticky left-0 h-[15rem] text-white bg-primary-light-blue px-2 z-10"
+    class="sticky left-0 h-[15rem] text-white bg-primary-light-blue p-2 z-10 flex flex-col justify-between"
   >
-    {{ objectives.type | uppercase }}
-  </p>
+    <p class="text-center">{{ objectives.type | uppercase }}</p>
+    <button class="bg-primary-dark-blue px-3 py-1">Submit</button>
+  </div>
   <span *ngFor="let goals of getEntries(objectives.fields)">
     <button
       [ngClass]="{ 'dev-card': objectives.type === 'development goal' }"
