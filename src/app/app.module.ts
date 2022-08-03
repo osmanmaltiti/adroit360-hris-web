@@ -10,6 +10,8 @@ import { ManagerAuthComponent } from './auth/manager/manager.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ManagerComponent } from './manager/manager.component';
 import { TaskbarComponent } from './employee/taskbar/taskbar.component';
+import { CreateDevelopmentComponent } from './employee/create-development/create-development.component';
+import { CreatePerformanceComponent } from './employee/create-performance/create-performance.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { TaskbarComponent } from './employee/taskbar/taskbar.component';
     ManagerAuthComponent,
     EmployeeAuthComponent,
     TaskbarComponent,
+    CreateDevelopmentComponent,
+    CreatePerformanceComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

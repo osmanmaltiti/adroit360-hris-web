@@ -15,10 +15,16 @@
         </ul>
       </div>
       <div class="w-full flex flex-col items-end gap-1">
-        <button class="bg-primary-dark-blue text-white px-2 py-1 rounded">
+        <button
+          (click)="setOpen('dev')"
+          class="bg-primary-dark-blue text-white px-2 py-1 rounded"
+        >
           Development Goal
         </button>
-        <button class="bg-primary-dark-blue text-white px-2 py-1 rounded">
+        <button
+          (click)="setOpen('performance')"
+          class="bg-primary-dark-blue text-white px-2 py-1 rounded"
+        >
           Perfomance Goal
         </button>
         <button class="bg-primary-dark-blue text-white px-2 py-1 rounded">
@@ -38,8 +44,16 @@
         class="w-full flex flex-col gap-6 h-full scrollbar-thin lg:scrollbar-thumb-black overflow-y-auto flex-grow"
       >
         <!-- task component -->
-        <app-taskbar></app-taskbar>
+        <app-taskbar *ngFor="let goal of goals" [data]="goal"></app-taskbar>
       </div>
     </div>
   </section>
+  <app-create-performance
+    [setOpen]="newPerformanceGoal"
+    (close)="setOpen('performance')"
+  ></app-create-performance>
+  <app-create-development
+    [setOpen]="newDevGoal"
+    (close)="setOpen('dev')"
+  ></app-create-development>
 </main>

@@ -1,0 +1,89 @@
+<main
+  *ngIf="setOpen"
+  class="fixed w-screen h-screen bg-[#0000004f] top-0 left-0 z-20"
+>
+  <section
+    class="bg-white w-full h-full p-2 overflow-y-auto scrollbar-thin xl:scrollbar-thumb-gray-500"
+  >
+    <nav class="flex flex-row justify-between text-xl">
+      <h1>{{ "new development objective" | uppercase }}</h1>
+      <button class="text-2xl" (click)="onClose()">
+        <span class="iconify" data-icon="eva:close-fill"></span>
+      </button>
+    </nav>
+    <form class="flex flex-col w-full gap-4 text-base mt-4">
+      <span id="devGoals" class="flex flex-col w-full gap-2">
+        <label for="development">Personal development goals</label>
+        <input
+          id="development"
+          name="development"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+        <button
+          class="w-fit self-end order-last"
+          (click)="onClick('devGoals', 'development')"
+        >
+          add
+        </button>
+      </span>
+      <span id="managementSupport" class="flex flex-col w-full">
+        <label for="management">Management support</label>
+        <input
+          id="management"
+          name="management"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+        <button
+          class="w-fit self-end order-last"
+          (click)="onClick('managementSupport', 'management')"
+        >
+          add
+        </button>
+      </span>
+      <span id="activityToAchieveGoal" class="flex flex-col w-full">
+        <label for="activity">Activity to achieve goal</label>
+        <input
+          id="activity"
+          name="activity"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+        <button
+          class="w-fit self-end order-last"
+          (click)="onClick('activityToAchieveGoal', 'activity')"
+        >
+          add
+        </button>
+      </span>
+      <span id="comments" class="flex flex-col w-full">
+        <label for="comment">Job holder's comments</label>
+        <input
+          id="comment"
+          name="comment"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+        <button
+          class="w-fit self-end order-last"
+          (click)="onClick('comments', 'comment')"
+        >
+          add
+        </button>
+      </span>
+      <span class="flex flex-col w-full">
+        <label for="score">Score</label>
+        <input
+          id="score"
+          name="score"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+      </span>
+      <span class="flex flex-col w-full">
+        <label for="rating">Rating</label>
+        <input
+          id="rating"
+          name="rating"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+      </span>
+    </form>
+  </section>
+</main>

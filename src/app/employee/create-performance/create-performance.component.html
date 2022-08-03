@@ -1,0 +1,73 @@
+<main
+  *ngIf="setOpen"
+  class="fixed w-screen h-screen bg-[#0000004f] top-0 left-0 z-20"
+>
+  <section class="bg-white w-full h-full p-2">
+    <nav class="flex flex-row justify-between text-xl">
+      <h1>{{ "new performance objective" | uppercase }}</h1>
+      <button class="text-2xl" (click)="onClose()">
+        <span class="iconify" data-icon="eva:close-fill"></span>
+      </button>
+    </nav>
+    <form class="flex flex-col w-full gap-4 text-base mt-4">
+      <span id="perfGoals" class="flex flex-col w-full gap-2">
+        <label for="performance">Performance Goals</label>
+        <input
+          id="performance"
+          name="performance"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+        <button
+          class="w-fit self-end order-last"
+          (click)="onClick('perfGoals', 'performance')"
+        >
+          add
+        </button>
+      </span>
+      <span id="keymeasures" class="flex flex-col w-full">
+        <label for="measures">Key Performance Measures</label>
+        <input
+          id="measures"
+          name="measures"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+        <button
+          class="w-fit self-end order-last"
+          (click)="onClick('keymeasures', 'measures')"
+        >
+          add
+        </button>
+      </span>
+      <span id="comments" class="flex flex-col w-full">
+        <label for="comment">Job Holder's Comments</label>
+        <input
+          id="comment"
+          name="comment"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+        <button
+          class="w-fit self-end order-last"
+          (click)="onClick('comments', 'comment')"
+        >
+          add
+        </button>
+      </span>
+      <span class="flex flex-col w-full">
+        <label for="score">Score</label>
+        <input
+          id="score"
+          name="score"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+      </span>
+      <span class="flex flex-col w-full">
+        <label for="rating">Rating</label>
+        <input
+          id="rating"
+          name="rating"
+          class="border-b-2 border-black focus:outline-none py-1"
+        />
+      </span>
+    </form>
+  </section>
+</main>

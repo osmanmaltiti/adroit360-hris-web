@@ -1,37 +1,25 @@
 <div
+  [ngClass]="{ 'dev-border': objectives?.goalType === 'development goal' }"
   class="w-full relative overflow-x-auto scrollbar-thin lg:scrollbar-thumb-black rounded-l-md border-2 border-r-0 border-primary-light-blue pr-2 py-4 gap-4 flex flex-row flex-nowrap text-white"
 >
   <!-- TASK DETAILS -->
-  <p class="sticky left-0 h-[15rem] text-white bg-primary-light-blue px-2">
-    PERFORMANCE GOAL
+  <p
+    [ngClass]="{ dev: objectives?.goalType === 'development goal' }"
+    class="sticky left-0 h-[15rem] text-white bg-primary-light-blue px-2"
+  >
+    {{ objectives?.goalType | uppercase }}
   </p>
-  <!-- ACTIVE TASKS -->
-  <button
-    class="w-[15rem] h-[15rem] p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col gap-2"
-  >
-    <p class="mx-auto font-medium">ACTIVE GOALS</p>
-    <ul *ngFor="let x of [1, 2, 3, 4, 5, 6, 7]" class="w-full flex flex-col">
-      <li class="border-b border-white">Task {{ x }}</li>
-    </ul>
-  </button>
-  <!-- COMPLETED TASKS -->
-  <button
-    class="w-[15rem] h-[15rem] p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col gap-2"
-  >
-    <p class="mx-auto font-medium">COMPLETED</p>
-    <ul *ngFor="let x of [1, 2, 3, 4, 5, 6, 7]" class="w-full flex flex-col">
-      <li class="border-b border-white">Task {{ x }}</li>
-    </ul>
-  </button>
-  <!-- OUTSTANDING TASKS -->
-  <button
-    class="w-[15rem] h-[15rem] p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col gap-2"
-  >
-    <p class="mx-auto font-medium">OUTSTANDING</p>
-    <ul *ngFor="let x of [1, 2, 3, 4, 5, 6, 7]" class="w-full flex flex-col">
-      <li class="border-b border-white">Task {{ x }}</li>
-    </ul>
-  </button>
+  <span *ngFor="let goals of objectives?.goals">
+    <button
+      [ngClass]="{ 'dev-card': objectives?.goalType === 'development goal' }"
+      class="w-[15rem] h-[15rem] overflow-y-hidden p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col gap-2"
+    >
+      <p class="mx-auto font-medium">{{ goals.field | uppercase }}</p>
+      <ul *ngFor="let x of goals.data" class="w-full flex flex-col">
+        <li class="border-b border-white">{{ x }}</li>
+      </ul>
+    </button>
+  </span>
 </div>
 <!-- POPUP -->
 <section

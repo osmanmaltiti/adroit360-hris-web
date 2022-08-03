@@ -1,0 +1,13 @@
+.dev {
+  --tw-bg-opacity: 1;
+  background-color: rgb(177 162 150 / var(--tw-bg-opacity));
+  border-color: rgb(177 162 150 / var(--tw-bg-opacity));
+}
+.dev-border {
+  --tw-bg-opacity: 1;
+  border-color: rgb(177 162 150 / var(--tw-bg-opacity));
+}
+.dev-card {
+  --tw-border-opacity: 1;
+  background-color: rgb(115 149 174 / var(--tw-border-opacity));
+}
