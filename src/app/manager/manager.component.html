@@ -1,1 +1,45 @@
-<p>manager works!</p>
+<main class="w-screen h-screen flex flex-col">
+  <nav class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray"></nav>
+  <section
+    class="w-full h-[calc(100vh-3rem)] relative mt-auto overflow-y-auto pl-1 lg:px-4 scrollbar-thin lg:scrollbar-thumb-black flex flex-col gap-4 pt-2"
+  >
+    <header class="w-full flex flex-row justify-between py-1 pr-1 lg:pr-0">
+      <div class="w-full flex flex-row gap-1">
+        <span
+          class="iconify w-12 h-12"
+          data-icon="carbon:user-avatar-filled"
+        ></span>
+        <ul class="flex flex-col overflow-ellipsis">
+          <li>AUGUST 8, 2022</li>
+          <li class="whitespace-nowrap">TRAFALGAR D WATER LAW</li>
+          <li>LINE MANAGER</li>
+        </ul>
+      </div>
+    </header>
+    <div
+      class="h-full flex flex-col z-10 rounded-t-md bg-white gap-6 pt-6 pb-2"
+    >
+      <div class="flex flex-col w-full">
+        <p>Pending Reviews</p>
+        <span
+          class="flex flex-row flex-nowrap overflow-x-auto p-2 gap-2 scrollbar-thin"
+        >
+          <!-- review-card -->
+          <app-review-card></app-review-card>
+        </span>
+      </div>
+
+      <div class="flex flex-col w-full">
+        <p>History</p>
+        <ul class="grid grid-cols-history border border-black">
+          <li></li>
+          <li class="px-1 border-x border-black">Name</li>
+          <li class="px-1 border-r border-black">Role</li>
+          <li class="px-1">Status</li>
+        </ul>
+        <!-- history card -->
+        <app-history-card></app-history-card>
+      </div>
+    </div>
+  </section>
+</main>

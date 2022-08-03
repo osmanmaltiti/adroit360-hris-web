@@ -4,10 +4,11 @@ import { AuthComponent } from './auth/auth.component';
 import { EmployeeAuthComponent } from './auth/employee/employee.component';
 import { ManagerAuthComponent } from './auth/manager/manager.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { ManagerComponent } from './manager/manager.component';
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent,
     children: [
       { path: '', component: EmployeeAuthComponent },
@@ -15,8 +16,12 @@ const routes: Routes = [
     ],
   },
   {
-    path: '',
+    path: 'employee',
     component: EmployeeComponent,
+  },
+  {
+    path: 'manager',
+    component: ManagerComponent,
   },
 ];
 

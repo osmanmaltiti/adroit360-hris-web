@@ -1,12 +1,13 @@
 <main class="w-screen h-screen flex flex-col">
   <nav class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray"></nav>
   <section
-    class="w-full h-[calc(100vh-3rem)] relative mt-auto overflow-y-auto scrollbar-thin lg:scrollbar-thumb-black flex flex-col gap-4 pt-2"
+    class="w-full h-[calc(100vh-3rem)] relative mt-auto overflow-y-auto pl-1 lg:px-4 scrollbar-thin lg:scrollbar-thumb-black flex flex-col gap-4 pt-2"
   >
-    <header class="fixed left-0 w-full flex flex-row justify-between p-1">
+    <header class="w-full flex flex-row justify-between py-1 pr-1 lg:pr-0">
       <div class="w-full flex flex-row gap-1">
         <span
-          class="w-12 h-12 rounded-full bg-primary-dark-gray flex-shrink-0"
+          class="iconify w-12 h-12"
+          data-icon="carbon:user-avatar-filled"
         ></span>
         <ul class="flex flex-col overflow-ellipsis">
           <li>AUGUST 8, 2022</li>
@@ -33,25 +34,27 @@
       </div>
     </header>
     <div
-      class="h-full flex flex-col z-10 mt-[8rem] rounded-t-md bg-white gap-6 pt-6 pl-2 box-shadow"
+      class="h-full flex flex-col z-10 rounded-t-md bg-white gap-6 pt-6 pb-2"
     >
       <select class="w-fit ring-1 ring-black focus:outline-0">
         <option>Filter</option>
         <option>Performance</option>
         <option>Development</option>
       </select>
-      <div
-        class="w-full flex flex-col gap-6 h-full scrollbar-thin lg:scrollbar-thumb-black overflow-y-auto flex-grow"
-      >
+      <div class="w-full flex flex-col gap-6 h-full">
         <!-- task component -->
         <app-taskbar *ngFor="let goal of goals" [data]="goal"></app-taskbar>
       </div>
     </div>
   </section>
+
+  <!-- create new performance objectives -->
   <app-create-performance
     [setOpen]="newPerformanceGoal"
     (close)="setOpen('performance')"
   ></app-create-performance>
+
+  <!-- create new development objectives -->
   <app-create-development
     [setOpen]="newDevGoal"
     (close)="setOpen('dev')"

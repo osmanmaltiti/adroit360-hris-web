@@ -13,6 +13,9 @@ module.exports = {
         "primary-dark-blue": "#557A95",
         "primary-light-brown": "#B1A296",
       },
+      gridTemplateColumns: {
+        history: "10% 50% 20% 20%",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar")],

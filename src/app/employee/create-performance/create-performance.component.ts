@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-performance',
@@ -8,22 +9,33 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class CreatePerformanceComponent implements OnInit {
   @Input('setOpen') setOpen: boolean = false;
   @Output('close') setClose: EventEmitter<any> = new EventEmitter();
+  performanceForm: FormGroup = new FormGroup({});
+
   constructor() {}
 
-  ngOnInit(): void {}
-
-  onClick(id: string, name: string) {
-    const target = document.getElementById(id);
-    const newInputField = document.createElement('input');
-    newInputField.setAttribute('name', name);
-    newInputField.setAttribute(
-      'class',
-      'border-b-2 border-black focus:outline-none py-1'
-    );
-    target?.appendChild(newInputField);
+  ngOnInit(): void {
+    this.performanceForm = new FormGroup({
+      performance: new FormArray([]),
+      measures: new FormArray([]),
+      comments: new FormArray([]),
+    });
   }
 
   onClose() {
     this.setClose.emit();
+  }
+
+  onSubmit() {
+    console.log(this.performanceForm.value);
+  }
+
+  onAdd(fieldName: string) {
+    (<FormArray>this.performanceForm.get(fieldName)).push(
+      new FormControl(null)
+    );
+  }
+
+  getControls(controlName: string) {
+    return (this.performanceForm.get(controlName) as FormArray).controls;
   }
 }

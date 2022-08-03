@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { EmployeeAuthComponent } from './auth/employee/employee.component';
 import { ManagerAuthComponent } from './auth/manager/manager.component';
-import { EmployeeComponent } from './employee/employee.component';
-import { ManagerComponent } from './manager/manager.component';
-import { TaskbarComponent } from './employee/taskbar/taskbar.component';
 import { CreateDevelopmentComponent } from './employee/create-development/create-development.component';
 import { CreatePerformanceComponent } from './employee/create-performance/create-performance.component';
-
+import { EmployeeComponent } from './employee/employee.component';
+import { TaskbarComponent } from './employee/taskbar/taskbar.component';
+import { HistoryCardComponent } from './manager/history-card/history-card.component';
+import { ManagerComponent } from './manager/manager.component';
+import { ReviewCardComponent } from './manager/review-card/review-card.component';
+import { store } from './store/store';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +27,16 @@ import { CreatePerformanceComponent } from './employee/create-performance/create
     TaskbarComponent,
     CreateDevelopmentComponent,
     CreatePerformanceComponent,
+    ReviewCardComponent,
+    HistoryCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    StoreModule.forRoot({ ...store }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
