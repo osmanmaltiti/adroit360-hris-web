@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { store } from '../store/store';
 import { EmployeeService } from './employee.service';
 
 @Component({
@@ -14,12 +12,13 @@ export class EmployeeComponent implements OnInit {
 
   goals: any[] = [];
 
-  constructor(
-    private stores: Store<typeof store>,
-    private employeeService: EmployeeService
-  ) {}
+  constructor(private employeeService: EmployeeService) {}
 
   ngOnInit(): void {
+    this.onGetObjectives();
+  }
+
+  onGetObjectives() {
     this.employeeService.onGetGoals().subscribe({
       next: ({ status, data }) => {
         if (status === 'success') {
@@ -32,8 +31,10 @@ export class EmployeeComponent implements OnInit {
   setOpen(popupName: string) {
     if (popupName === 'dev') {
       this.newDevGoal = !this.newDevGoal;
+      this.onGetObjectives();
     } else {
       this.newPerformanceGoal = !this.newPerformanceGoal;
+      this.onGetObjectives();
     }
   }
 }

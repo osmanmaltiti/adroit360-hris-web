@@ -1,8 +1,8 @@
 export interface IDevelopmentGoal {
-  development: Array<string>;
-  support: Array<string>;
-  activity: Array<string>;
-  comments: Array<string>;
+  development: { status: string; data: string[] };
+  support: { status: string; data: string[] };
+  activity: { status: string; data: string[] };
+  comments: { status: string; data: string[] };
   score: number;
   rating: number;
 }

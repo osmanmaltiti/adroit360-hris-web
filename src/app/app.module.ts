@@ -17,6 +17,7 @@ import { HistoryCardComponent } from './manager/history-card/history-card.compon
 import { ManagerComponent } from './manager/manager.component';
 import { ReviewCardComponent } from './manager/review-card/review-card.component';
 import { store } from './store/store';
+import { PopupComponent } from './employee/taskbar/popup/popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { store } from './store/store';
     CreatePerformanceComponent,
     ReviewCardComponent,
     HistoryCardComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,21 +10,36 @@ import {
   styleUrls: ['./taskbar.component.css'],
 })
 export class TaskbarComponent implements OnInit {
-  @Input('data') objectives: IGoal = {
+  @Input('data') objective: IGoal = {
     type: 'performance goal',
     fields: {
-      development: [],
-      support: [],
-      activity: [],
-      comments: [],
+      development: { status: '', data: [] },
+      support: { status: '', data: [] },
+      activity: { status: '', data: [] },
+      comments: { status: '', data: [] },
       score: 0,
       rating: 0,
     },
   };
 
+  popupDisplay: boolean = false;
+  popupData: [string, any] = ['', ''];
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  setPopup() {
+    this.popupDisplay = !this.popupDisplay;
+  }
+
+  setPopupData(data: [string, any]) {
+    this.popupData = data;
+  }
+
+  onReviewSubmit(objective: IGoal) {
+    console.log(objective);
+  }
 
   getEntries(data: IDevelopmentGoal) {
     return Object.entries(data);

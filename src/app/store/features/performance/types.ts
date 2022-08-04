@@ -1,7 +1,7 @@
 export interface IPerformanceGoal {
-  performance: Array<string>;
-  measures: Array<string>;
-  comments: Array<string>;
+  performance: { status: string; data: string[] };
+  measures: { status: string; data: string[] };
+  comments: { status: string; data: string[] };
   score: number;
   rating: number;
 }

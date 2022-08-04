@@ -1,18 +1,24 @@
 <div
-  [ngClass]="{ 'dev-border': objectives.type === 'development goal' }"
+  [ngClass]="{ 'dev-border': objective.type === 'development goal' }"
   class="w-full relative overflow-x-auto scrollbar-thin lg:scrollbar-thumb-primary-dark-gray radius rounded-l-md lg:rounded-r-md border-2 xl:border-r-2 border-r-0 border-primary-light-blue pr-2 py-4 gap-4 flex flex-row flex-nowrap text-white mb-4"
 >
   <!-- TASK DETAILS -->
   <div
-    [ngClass]="{ dev: objectives.type === 'development goal' }"
+    [ngClass]="{ dev: objective.type === 'development goal' }"
     class="sticky left-0 h-[15rem] text-white bg-primary-light-blue p-2 z-10 flex flex-col justify-between"
   >
-    <p class="text-center">{{ objectives.type | uppercase }}</p>
-    <button class="bg-primary-dark-blue px-3 py-1">Submit</button>
-  </div>
-  <span *ngFor="let goals of getEntries(objectives.fields)">
+    <p class="text-center">{{ objective.type | uppercase }}</p>
     <button
-      [ngClass]="{ 'dev-card': objectives.type === 'development goal' }"
+      (click)="onReviewSubmit(objective)"
+      class="bg-primary-dark-blue px-3 py-1"
+    >
+      Submit
+    </button>
+  </div>
+  <span *ngFor="let goals of getEntries(objective.fields)">
+    <button
+      (click)="setPopup(); setPopupData(goals)"
+      [ngClass]="{ 'dev-card': objective.type === 'development goal' }"
       class="w-[15rem] h-[15rem] overflow-y-hidden p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col xl:gap-2"
     >
       <p class="mx-auto font-medium">{{ goals[0] | uppercase }}</p>
@@ -21,7 +27,7 @@
         *ngIf="goals[0] !== 'score' && goals[0] !== 'ratings'"
         class="w-full flex flex-col mt-4 gap-2"
       >
-        <li *ngFor="let x of goals[1]" class="border-b border-white">
+        <li *ngFor="let x of goals[1].data" class="border-b border-white">
           {{ x }}
         </li>
       </ul>
@@ -62,26 +68,8 @@
     </button>
   </span>
 </div>
-<!-- POPUP -->
-<section
-  *ngIf="false"
-  class="fixed w-screen h-screen bg-[#0000004f] top-0 left-0"
->
-  <div class="bg-white w-full h-full p-2">
-    <button class="absolute top-2 right-1 text-2xl">
-      <span class="iconify" data-icon="eva:close-fill"></span>
-    </button>
-    <h1 class="text-2xl font-medium">ACTIVE GOALS</h1>
-    <ul
-      *ngFor="let x of [1, 2, 3, 4, 5, 6, 7]"
-      class="w-full flex-grow flex flex-col text-lg mt-4"
-    >
-      <li
-        class="border-b border-black flex flex-row w-full justify-between py-1 mb-4"
-      >
-        <p>Task {{ x }}</p>
-        <input type="checkbox" />
-      </li>
-    </ul>
-  </div>
-</section>
+<app-popup
+  [popupDisplay]="popupDisplay"
+  [popupData]="popupData"
+  (closePopup)="setPopup()"
+></app-popup>

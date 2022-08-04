@@ -40,11 +40,27 @@ export class CreateDevelopmentComponent implements OnInit {
     const developmentGoal: IGoal = {
       type: 'development goal',
       fields: {
-        ...this.developmentForm.value,
+        development: {
+          status: 'ongoing',
+          data: this.developmentForm.get('development')?.value,
+        },
+        support: {
+          status: 'ongoing',
+          data: this.developmentForm.get('support')?.value,
+        },
+        activity: {
+          status: 'ongoing',
+          data: this.developmentForm.get('activity')?.value,
+        },
+        comments: {
+          status: 'ongoing',
+          data: this.developmentForm.get('comments')?.value,
+        },
         score: 0,
         rating: 0,
       },
     };
+
     this.createDevelopmentService.onCreateObjective(developmentGoal).subscribe({
       next: () => {
         this.onClose();
