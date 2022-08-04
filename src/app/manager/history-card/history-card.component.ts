@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-history-card',
   templateUrl: './history-card.component.html',
-  styleUrls: ['./history-card.component.css']
+  styleUrls: ['./history-card.component.css'],
 })
 export class HistoryCardComponent implements OnInit {
+  @Input('history') history: any;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -12,13 +12,15 @@ import { ManagerAuthComponent } from './auth/manager/manager.component';
 import { CreateDevelopmentComponent } from './employee/create-development/create-development.component';
 import { CreatePerformanceComponent } from './employee/create-performance/create-performance.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { PopupComponent } from './employee/taskbar/popup/popup.component';
 import { TaskbarComponent } from './employee/taskbar/taskbar.component';
 import { HistoryCardComponent } from './manager/history-card/history-card.component';
 import { ManagerComponent } from './manager/manager.component';
+import { ManagerPopupComponent } from './manager/popup/popup.component';
 import { ReviewCardComponent } from './manager/review-card/review-card.component';
-import { store } from './store/store';
-import { PopupComponent } from './employee/taskbar/popup/popup.component';
 import { ReviewComponent } from './manager/review/review.component';
+import { store } from './store/store';
+import { CreateEmployeeComponent } from './manager/create-employee/create-employee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { ReviewComponent } from './manager/review/review.component';
     ReviewCardComponent,
     HistoryCardComponent,
     PopupComponent,
+    ManagerPopupComponent,
     ReviewComponent,
+    CreateEmployeeComponent,
   ],
   imports: [
     BrowserModule,

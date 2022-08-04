@@ -15,24 +15,26 @@
           <li class="font-medium">AUGUST 8, 2022</li>
           <li class="flex flex-row gap-2">
             <p>Name:</p>
-            <p class="font-medium">GOL D ROGER</p>
+            <p class="font-medium">{{ profile.fullname | uppercase }}</p>
           </li>
           <li class="flex flex-row gap-2">
             <p>Role:</p>
-            <p class="font-medium">LINE MANAGER</p>
+            <p class="font-medium">{{ profile.role | uppercase }}</p>
           </li>
         </ul>
       </div>
       <div
         class="w-full flex flex-row lg:justify-end items-end lg:items-start gap-1"
       >
-        <button
+        <a
+          [routerLink]="'create-user'"
           class="bg-primary-dark-blue text-white px-2 py-1 rounded flex flex-row items-center gap-1"
         >
           <span class="iconify" data-icon="fluent:add-16-filled"></span>
           <p>Add Employee</p>
-        </button>
+        </a>
         <button
+          (click)="onViewEmployees()"
           class="bg-primary-dark-blue text-white px-2 py-1 rounded flex flex-row items-center gap-1"
         >
           <p>View Employees</p>
@@ -61,11 +63,19 @@
           <li></li>
           <li class="px-1 border-x border-black">Name</li>
           <li class="px-1 border-r border-black">Role</li>
-          <li class="px-1">Status</li>
+          <li class="px-1 mx-auto">Score</li>
         </ul>
         <!-- history card -->
-        <app-history-card></app-history-card>
+        <app-history-card
+          *ngFor="let history of profile.history"
+          [history]="history"
+        ></app-history-card>
       </div>
     </div>
   </section>
+  <app-manager-popup
+    [popupDisplay]="viewEmployees"
+    [popupData]="profile.employees"
+    (closePopup)="onViewEmployees()"
+  ></app-manager-popup>
 </main>

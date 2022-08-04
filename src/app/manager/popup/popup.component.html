@@ -1,0 +1,29 @@
+<!-- POPUP -->
+<section
+  *ngIf="popupDisplay"
+  class="fixed w-screen h-screen bg-[#0000004f] top-0 left-0 z-20 flex flex-col items-center"
+>
+  <div
+    class="bg-white w-full h-full lg:max-w-[600px] m-auto lg:max-h-[600px] flex flex-col p-2 lg:p-6 relative"
+  >
+    <button (click)="onClose()" class="absolute top-2 right-1 text-2xl">
+      <span class="iconify" data-icon="eva:close-fill"></span>
+    </button>
+    <h1 class="text-xl font-medium">EMPLOYEES MANAGED</h1>
+    <ul class="px-2 mt-4 flex flex-col gap-2">
+      <li
+        *ngFor="let employee of popupData"
+        class="flex flex-row gap-2 bg-gray-200 p-2 rounded"
+      >
+        <span
+          class="iconify text-5xl"
+          data-icon="carbon:user-avatar-filled"
+        ></span>
+        <span class="flex flex-col">
+          <p class="text-lg font-medium">{{ employee.fullname | uppercase }}</p>
+          <p class="italic">{{ employee.role }}</p>
+        </span>
+      </li>
+    </ul>
+  </div>
+</section>
