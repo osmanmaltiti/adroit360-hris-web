@@ -1,12 +1,13 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
+import { EmployeeAuthComponent } from './auth/employee/employee.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import { EmployeeAuthComponent } from './auth/employee/employee.component';
 import { ManagerAuthComponent } from './auth/manager/manager.component';
 import { CreateDevelopmentComponent } from './employee/create-development/create-development.component';
 import { CreatePerformanceComponent } from './employee/create-performance/create-performance.component';
@@ -22,8 +23,8 @@ import { store } from './store/store';
     AuthComponent,
     ManagerComponent,
     EmployeeComponent,
-    ManagerAuthComponent,
     EmployeeAuthComponent,
+    ManagerAuthComponent,
     TaskbarComponent,
     CreateDevelopmentComponent,
     CreatePerformanceComponent,
@@ -35,6 +36,7 @@ import { store } from './store/store';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     StoreModule.forRoot({ ...store }),
   ],
   providers: [],

@@ -39,23 +39,23 @@
         </div>
       </span>
 
-      <span formArrayName="management" class="flex flex-col w-full">
+      <span formArrayName="support" class="flex flex-col w-full">
         <span class="w-full flex flex-row justify-between items-center">
-          <label for="management">Management support</label>
+          <label for="support">Management support</label>
           <button
             type="button"
             class="w-fit self-end order-last bg-primary-dark-blue text-white py-1 px-2 rounded"
-            (click)="onAdd('management')"
+            (click)="onAdd('support')"
           >
             add
           </button>
         </span>
         <div
           class="w-full"
-          *ngFor="let dev of getControls('management'); let i = index"
+          *ngFor="let dev of getControls('support'); let i = index"
         >
           <input
-            id="management"
+            id="support"
             [formControlName]="i"
             class="w-full border-b-2 border-black focus:outline-none py-1"
           />
@@ -85,26 +85,26 @@
         </div>
       </span>
 
-      <span formArrayName="comment" class="flex flex-col w-full">
+      <span formArrayName="comments" class="flex flex-col w-full">
         <span class="w-full flex flex-row justify-between items-center">
-          <label for="comment">Job holder's comments</label>
+          <label for="comments">Job holder's comments</label>
           <button
             type="button"
             class="w-fit self-end order-last bg-primary-dark-blue text-white py-1 px-2 rounded"
-            (click)="onAdd('comment')"
+            (click)="onAdd('comments')"
           >
             add
           </button>
         </span>
         <div
           class="w-full"
-          *ngFor="let dev of getControls('comment'); let i = index"
+          *ngFor="let dev of getControls('comments'); let i = index"
         >
           <input
-            id="comment"
+            id="comments"
             [formControlName]="i"
             class="w-full border-b-2 border-black focus:outline-none py-1"
-            formControlName="comment"
+            formControlName="comments"
           />
         </div>
       </span>

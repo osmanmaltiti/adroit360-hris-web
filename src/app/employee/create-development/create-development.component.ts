@@ -7,10 +7,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { add_dev_goal } from 'src/app/store/features/development/development.actions';
 import { IGoal } from 'src/app/store/features/development/types';
-import { store } from 'src/app/store/store';
+import { CreateDevelopmentService } from './create-development.service';
 
 @Component({
   selector: 'app-create-development',
@@ -23,18 +21,16 @@ export class CreateDevelopmentComponent implements OnInit {
   @ViewChild('formRef') formRef: NgForm | undefined;
   developmentForm: FormGroup = new FormGroup({});
 
-  constructor(private stores: Store<typeof store>) {}
+  constructor(private createDevelopmentService: CreateDevelopmentService) {}
 
   ngOnInit(): void {
     this.developmentForm = new FormGroup({
       development: new FormArray([]),
-      management: new FormArray([]),
+      support: new FormArray([]),
       activity: new FormArray([]),
-      comment: new FormArray([]),
+      comments: new FormArray([]),
     });
   }
-
-  onClick(id: string, name: string) {}
 
   onClose() {
     this.setClose.emit();
@@ -49,7 +45,11 @@ export class CreateDevelopmentComponent implements OnInit {
         rating: 0,
       },
     };
-    this.stores.dispatch(add_dev_goal({ payload: developmentGoal }));
+    this.createDevelopmentService.onCreateObjective(developmentGoal).subscribe({
+      next: () => {
+        this.onClose();
+      },
+    });
   }
 
   onAdd(fieldName: string) {

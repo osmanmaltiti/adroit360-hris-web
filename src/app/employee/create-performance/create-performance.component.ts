@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { add_performance_goal } from 'src/app/store/features/performance/performance.actions';
 import { IGoal } from 'src/app/store/features/performance/types';
 import { store } from 'src/app/store/store';
+import { CreatePerformanceService } from './create-performance.service';
 
 @Component({
   selector: 'app-create-performance',
@@ -15,7 +15,10 @@ export class CreatePerformanceComponent implements OnInit {
   @Output('close') setClose: EventEmitter<any> = new EventEmitter();
   performanceForm: FormGroup = new FormGroup({});
 
-  constructor(private stores: Store<typeof store>) {}
+  constructor(
+    private stores: Store<typeof store>,
+    private createPerformanceService: CreatePerformanceService
+  ) {}
 
   ngOnInit(): void {
     this.performanceForm = new FormGroup({
@@ -38,7 +41,11 @@ export class CreatePerformanceComponent implements OnInit {
         rating: 0,
       },
     };
-    this.stores.dispatch(add_performance_goal({ payload: performanceGoal }));
+    this.createPerformanceService.onCreateObjective(performanceGoal).subscribe({
+      next: () => {
+        this.onClose();
+      },
+    });
   }
 
   onAdd(fieldName: string) {
