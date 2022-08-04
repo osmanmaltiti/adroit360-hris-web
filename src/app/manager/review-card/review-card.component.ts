@@ -1,4 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { setReview } from 'src/app/store/features/reviews/review.actions';
+import { IReview } from 'src/app/store/features/reviews/types';
+import { store } from 'src/app/store/store';
 
 @Component({
   selector: 'app-review-card',
@@ -18,18 +23,12 @@ export class ReviewCardComponent implements OnInit {
     performanceObjective: null,
   };
 
-  constructor() {}
+  constructor(private stores: Store<typeof store>, private router: Router) {}
 
   ngOnInit(): void {}
-}
-interface IReview {
-  score: number;
-  rating: number;
-  employee: string;
-  appraise: string;
-  employeeId: string;
-  managerId: string;
-  objectiveType: string;
-  developmentObjective: any;
-  performanceObjective: any;
+
+  dispatchReview(data: IReview) {
+    this.stores.dispatch(setReview({ payload: data }));
+    this.router.navigate(['review']);
+  }
 }

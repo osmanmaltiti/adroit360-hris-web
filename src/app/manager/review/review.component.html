@@ -1,0 +1,84 @@
+<main class="w-screen h-screen flex flex-col">
+  <nav class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray"></nav>
+  <section
+    class="w-full h-[calc(100vh-3rem)] relative mt-auto overflow-y-auto lg:px-4 scrollbar-thin lg:scrollbar-thumb-black flex flex-col items-center gap-4 pt-2"
+  >
+    <header
+      class="w-[80%] h-[10rem] bg-white shadow-xl ring-1 ring-gray-100 rounded relative mt-4 flex flex-col"
+    >
+      <span
+        class="iconify absolute text-6xl -top-5 left-1/2 -translate-x-1/2"
+        data-icon="carbon:user-avatar-filled"
+      ></span>
+      <ul
+        class="w-full h-full flex flex-col pt-12 px-2 text-base justify-evenly"
+      >
+        <li class="flex flex-row gap-2">
+          <p>NAME:</p>
+          <p>{{ review.employee | uppercase }}</p>
+        </li>
+        <li class="flex flex-row gap-2">
+          <p>ROLE:</p>
+          <p>EMPLOYEE</p>
+        </li>
+        <li class="flex flex-row gap-2">
+          <p>OBJECTIVE:</p>
+          <p>{{ review.objectiveType | uppercase }}</p>
+        </li>
+      </ul>
+    </header>
+    <div class="w-full flex-grow flex flex-col px-2">
+      <span class="w-full flex flex-col gap-4">
+        <ul
+          *ngFor="let field of getEntries(review)"
+          class="flex flex-col justify-between bg-gray-300 p-1"
+        >
+          <li
+            class="w-full flex-row flex text-base font-medium justify-between"
+          >
+            <p class="capitalize">{{ field[0] }}</p>
+            <span
+              class="flex flex-row gap-2"
+              *ngIf="field[0] === 'development' || field[0] === 'performance'"
+            >
+              <p>status:</p>
+              <p>{{ field[1].status }}</p>
+            </span>
+            <span *ngIf="field[0] === 'score'">{{ review.score }}</span>
+            <span *ngIf="field[0] === 'rating'">{{ review.rating }}</span>
+          </li>
+          <li *ngFor="let activity of field[1].data">- {{ activity }}</li>
+        </ul>
+      </span>
+    </div>
+    <div class="w-full flex flex-col text-base gap-2 items-center">
+      <div class="w-[95%] justify-between flex flex-row items-center gap-2">
+        <p>SCORE:</p>
+        <div class="flex flex-row items-center gap-2">
+          <button class="bg-primary-dark-blue text-white p-2 rounded">
+            <span class="iconify" data-icon="akar-icons:minus"></span>
+          </button>
+          <p class="text-lg">{{ review.score }}</p>
+          <button class="bg-primary-dark-blue text-white p-2 rounded">
+            <span class="iconify" data-icon="akar-icons:plus"></span>
+          </button>
+        </div>
+      </div>
+      <div class="w-[95%] justify-between flex flex-row items-center gap-2">
+        <p>RATING:</p>
+        <div class="flex flex-row items-center gap-2">
+          <button class="bg-primary-dark-blue text-white p-2 rounded">
+            <span class="iconify" data-icon="akar-icons:minus"></span>
+          </button>
+          <p>{{ review.rating }}</p>
+          <button class="bg-primary-dark-blue text-white p-2 rounded">
+            <span class="iconify" data-icon="akar-icons:plus"></span>
+          </button>
+        </div>
+      </div>
+      <button class="w-full bg-primary-dark-blue text-white px-6 py-2">
+        Appraise Review
+      </button>
+    </div>
+  </section>
+</main>

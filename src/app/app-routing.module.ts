@@ -5,6 +5,7 @@ import { EmployeeAuthComponent } from './auth/employee/employee.component';
 import { ManagerAuthComponent } from './auth/manager/manager.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ManagerComponent } from './manager/manager.component';
+import { ReviewComponent } from './manager/review/review.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'manager',
     component: ManagerComponent,
+  },
+  {
+    path: 'review',
+    component: ReviewComponent,
   },
 ];
 
