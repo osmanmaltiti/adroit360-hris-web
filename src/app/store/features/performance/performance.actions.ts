@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-import { IGoal } from './types';
+import { IPerfGoal } from './types';
 
 export const add_performance_goal = createAction(
   'ADD_TO_PERFORMANCE_GOALS',
-  props<{ payload: IGoal }>()
+  props<{ payload: IPerfGoal }>()
 );

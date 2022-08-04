@@ -10,7 +10,8 @@
     <p class="text-center">{{ objective.type | uppercase }}</p>
     <button
       (click)="onReviewSubmit(objective)"
-      class="bg-primary-dark-blue px-3 py-1"
+      [disabled]="canSubmit(objective)"
+      class="bg-primary-dark-blue px-3 py-1 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:italic"
     >
       Submit
     </button>
@@ -19,7 +20,7 @@
     <button
       (click)="setPopup(); setPopupData(goals)"
       [ngClass]="{ 'dev-card': objective.type === 'development goal' }"
-      class="w-[15rem] h-[15rem] overflow-y-hidden p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col xl:gap-2"
+      class="w-[15rem] h-[15rem] overflow-y-hidden p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col xl:gap-2 relative"
     >
       <p class="mx-auto font-medium">{{ goals[0] | uppercase }}</p>
       <!-- others -->
@@ -65,6 +66,14 @@
       <div *ngIf="goals[0] === 'score'" class="text-5xl m-auto">
         {{ goals[1] }}/<sub>5</sub>
       </div>
+
+      <!-- overlay -->
+      <div
+        *ngIf="goals[1].status === 'completed'"
+        class="absolute w-full h-full bg-[#00800071] top-0 left-0 grid place-items-center"
+      >
+        <span class="iconify text-6xl" data-icon="bi:check-circle-fill"></span>
+      </div>
     </button>
   </span>
 </div>
@@ -72,4 +81,5 @@
   [popupDisplay]="popupDisplay"
   [popupData]="popupData"
   (closePopup)="setPopup()"
+  (completeObjective)="setComplete(objective)"
 ></app-popup>

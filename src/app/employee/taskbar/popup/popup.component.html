@@ -3,7 +3,9 @@
   *ngIf="popupDisplay"
   class="fixed w-screen h-screen bg-[#0000004f] top-0 left-0 z-20 flex flex-col items-center"
 >
-  <div class="bg-white w-full h-full flex flex-col p-2">
+  <div
+    class="bg-white w-full h-full lg:max-w-[600px] m-auto lg:max-h-[600px] flex flex-col p-2 lg:p-6 relative"
+  >
     <button (click)="onClose()" class="absolute top-2 right-1 text-2xl">
       <span class="iconify" data-icon="eva:close-fill"></span>
     </button>
@@ -16,11 +18,18 @@
         <p>{{ x }}</p>
       </li>
     </ul>
-    <ul class="flex flex-row w-full justify-between text-lg my-2">
+    <ul
+      *ngIf="popupData[0] === 'development' || popupData[0] === 'performance'"
+      class="flex flex-row w-full justify-between text-lg my-2"
+    >
       <li>Status:</li>
       <li>{{ popupData[1].status }}</li>
     </ul>
-    <button class="bg-primary-dark-blue text-white px-6 py-2 mx-auto">
+    <button
+      (click)="onComplete()"
+      *ngIf="popupData[0] === 'development' || popupData[0] === 'performance'"
+      class="bg-primary-dark-blue text-white px-6 py-2 mx-auto"
+    >
       Completed
     </button>
   </div>

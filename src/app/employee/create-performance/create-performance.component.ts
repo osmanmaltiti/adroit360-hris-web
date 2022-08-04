@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { IGoal } from 'src/app/store/features/performance/types';
+import { IPerfGoal } from 'src/app/store/features/performance/types';
 import { CreatePerformanceService } from './create-performance.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class CreatePerformanceComponent implements OnInit {
   }
 
   onSubmit() {
-    const performanceGoal: IGoal = {
+    const performanceGoal: IPerfGoal = {
       type: 'performance goal',
       fields: {
         performance: {

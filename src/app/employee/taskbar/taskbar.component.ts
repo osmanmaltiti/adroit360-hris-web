@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   IDevelopmentGoal,
   IGoal,
 } from 'src/app/store/features/development/types';
+import { IPerformanceGoal } from './../../store/features/performance/types';
+import { TaskbarService } from './taskbar.service';
 
 @Component({
   selector: 'app-taskbar',
@@ -10,6 +12,7 @@ import {
   styleUrls: ['./taskbar.component.css'],
 })
 export class TaskbarComponent implements OnInit {
+  @Output('refresh') refreshApi: EventEmitter<any> = new EventEmitter();
   @Input('data') objective: IGoal = {
     type: 'performance goal',
     fields: {
@@ -25,7 +28,7 @@ export class TaskbarComponent implements OnInit {
   popupDisplay: boolean = false;
   popupData: [string, any] = ['', ''];
 
-  constructor() {}
+  constructor(private taskbarService: TaskbarService) {}
 
   ngOnInit(): void {}
 
@@ -37,11 +40,26 @@ export class TaskbarComponent implements OnInit {
     this.popupData = data;
   }
 
-  onReviewSubmit(objective: IGoal) {
-    console.log(objective);
+  setComplete(objective: IGoal) {
+    this.taskbarService.onComplete(objective).subscribe({
+      next: () => this.refreshApi.emit(),
+    });
   }
 
-  getEntries(data: IDevelopmentGoal) {
+  onReviewSubmit(objective: IGoal) {
+    this.taskbarService.onReviewSubmit(objective).subscribe({
+      next: (value) => console.log(value),
+    });
+  }
+
+  canSubmit(objective: any) {
+    if (objective.type === 'development goal') {
+      return objective.fields.development.status === 'ongoing';
+    }
+    return objective.fields.performance.status === 'ongoing';
+  }
+
+  getEntries(data: IDevelopmentGoal | IPerformanceGoal) {
     return Object.entries(data);
   }
 

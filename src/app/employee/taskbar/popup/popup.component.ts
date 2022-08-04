@@ -9,6 +9,8 @@ export class PopupComponent implements OnInit {
   @Input('popupDisplay') popupDisplay: boolean = false;
   @Input('popupData') popupData: [string, any] = ['', ''];
   @Output('closePopup') closePopUp: EventEmitter<any> = new EventEmitter();
+  @Output('completeObjective') completeObjective: EventEmitter<any> =
+    new EventEmitter();
 
   constructor() {}
 
@@ -16,5 +18,9 @@ export class PopupComponent implements OnInit {
 
   onClose() {
     this.closePopUp.emit();
+  }
+
+  onComplete() {
+    this.completeObjective.emit();
   }
 }

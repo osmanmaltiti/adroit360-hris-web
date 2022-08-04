@@ -6,11 +6,11 @@ export interface IPerformanceGoal {
   rating: number;
 }
 
-export interface IGoal {
+export interface IPerfGoal {
   type: 'performance goal' | 'development goal';
   fields: IPerformanceGoal;
 }
 
 export interface IInitialState {
-  objectives: Array<IGoal>;
+  objectives: Array<IPerfGoal>;
 }

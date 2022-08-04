@@ -3,17 +3,40 @@
   <section
     class="w-full h-[calc(100vh-3rem)] relative mt-auto overflow-y-auto pl-1 lg:px-4 scrollbar-thin lg:scrollbar-thumb-black flex flex-col gap-4 pt-2"
   >
-    <header class="w-full flex flex-row justify-between py-1 pr-1 lg:pr-0">
+    <header
+      class="w-full flex flex-col lg:flex-row justify-between py-1 pr-1 lg:pr-0 gap-4"
+    >
       <div class="w-full flex flex-row gap-1">
         <span
           class="iconify w-12 h-12"
           data-icon="carbon:user-avatar-filled"
         ></span>
         <ul class="flex flex-col overflow-ellipsis">
-          <li>AUGUST 8, 2022</li>
-          <li class="whitespace-nowrap">TRAFALGAR D WATER LAW</li>
-          <li>LINE MANAGER</li>
+          <li class="font-medium">AUGUST 8, 2022</li>
+          <li class="flex flex-row gap-2">
+            <p>Name:</p>
+            <p class="font-medium">GOL D ROGER</p>
+          </li>
+          <li class="flex flex-row gap-2">
+            <p>Role:</p>
+            <p class="font-medium">LINE MANAGER</p>
+          </li>
         </ul>
+      </div>
+      <div
+        class="w-full flex flex-row lg:justify-end items-end lg:items-start gap-1"
+      >
+        <button
+          class="bg-primary-dark-blue text-white px-2 py-1 rounded flex flex-row items-center gap-1"
+        >
+          <span class="iconify" data-icon="fluent:add-16-filled"></span>
+          <p>Add Employee</p>
+        </button>
+        <button
+          class="bg-primary-dark-blue text-white px-2 py-1 rounded flex flex-row items-center gap-1"
+        >
+          <p>View Employees</p>
+        </button>
       </div>
     </header>
     <div
@@ -25,7 +48,10 @@
           class="flex flex-row flex-nowrap overflow-x-auto p-2 gap-2 scrollbar-thin"
         >
           <!-- review-card -->
-          <app-review-card></app-review-card>
+          <app-review-card
+            *ngFor="let review of reviews"
+            [reviews]="review"
+          ></app-review-card>
         </span>
       </div>
 
