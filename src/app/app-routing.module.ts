@@ -25,7 +25,7 @@ const routes: Routes = [
     component: ManagerComponent,
   },
   {
-    path: 'review',
+    path: 'manager/review',
     component: ReviewComponent,
   },
 ];

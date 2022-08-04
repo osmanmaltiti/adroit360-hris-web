@@ -29,6 +29,6 @@ export class ReviewCardComponent implements OnInit {
 
   dispatchReview(data: IReview) {
     this.stores.dispatch(setReview({ payload: data }));
-    this.router.navigate(['review']);
+    this.router.navigate(['manager/review']);
   }
 }

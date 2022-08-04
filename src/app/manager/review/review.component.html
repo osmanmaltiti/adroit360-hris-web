@@ -55,11 +55,17 @@
       <div class="w-[95%] justify-between flex flex-row items-center gap-2">
         <p>SCORE:</p>
         <div class="flex flex-row items-center gap-2">
-          <button class="bg-primary-dark-blue text-white p-2 rounded">
+          <button
+            (click)="decrease_score()"
+            class="bg-primary-dark-blue text-white p-2 rounded"
+          >
             <span class="iconify" data-icon="akar-icons:minus"></span>
           </button>
           <p class="text-lg">{{ review.score }}</p>
-          <button class="bg-primary-dark-blue text-white p-2 rounded">
+          <button
+            (click)="increase_score()"
+            class="bg-primary-dark-blue text-white p-2 rounded"
+          >
             <span class="iconify" data-icon="akar-icons:plus"></span>
           </button>
         </div>
@@ -67,16 +73,25 @@
       <div class="w-[95%] justify-between flex flex-row items-center gap-2">
         <p>RATING:</p>
         <div class="flex flex-row items-center gap-2">
-          <button class="bg-primary-dark-blue text-white p-2 rounded">
+          <button
+            (click)="decrease_rating()"
+            class="bg-primary-dark-blue text-white p-2 rounded"
+          >
             <span class="iconify" data-icon="akar-icons:minus"></span>
           </button>
           <p>{{ review.rating }}</p>
-          <button class="bg-primary-dark-blue text-white p-2 rounded">
+          <button
+            (click)="increase_rating()"
+            class="bg-primary-dark-blue text-white p-2 rounded"
+          >
             <span class="iconify" data-icon="akar-icons:plus"></span>
           </button>
         </div>
       </div>
-      <button class="w-full bg-primary-dark-blue text-white px-6 py-2">
+      <button
+        (click)="onAppraiseReview()"
+        class="w-full bg-primary-dark-blue text-white px-6 py-2"
+      >
         Appraise Review
       </button>
     </div>

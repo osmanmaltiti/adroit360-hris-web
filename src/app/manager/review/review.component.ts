@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import {
+  decreaseRating,
+  decreaseScore,
+  increaseRating,
+  increaseScore,
+  setAppraise,
+} from 'src/app/store/features/reviews/review.actions';
 import { initialState } from 'src/app/store/features/reviews/review.reducers';
 import { IReview } from 'src/app/store/features/reviews/types';
 import { store } from 'src/app/store/store';
+import { ReviewService } from './review.service';
 
 @Component({
   selector: 'app-review',
@@ -10,7 +19,12 @@ import { store } from 'src/app/store/store';
   styleUrls: ['./review.component.css'],
 })
 export class ReviewComponent implements OnInit {
-  constructor(private stores: Store<typeof store>) {}
+  constructor(
+    private stores: Store<typeof store>,
+    private reviewService: ReviewService,
+    private router: Router
+  ) {}
+
   review: IReview = initialState;
 
   ngOnInit(): void {
@@ -28,5 +42,26 @@ export class ReviewComponent implements OnInit {
     } else {
       return Object.entries(data.performanceObjective.fields) as [string, any];
     }
+  }
+
+  onAppraiseReview() {
+    this.stores.dispatch(setAppraise({ payload: 'true' }));
+    this.reviewService.onAppraiseReview(this.review).subscribe({
+      next: () => this.router.navigate(['/manager']),
+    });
+  }
+
+  increase_score() {
+    this.stores.dispatch(increaseScore());
+  }
+  decrease_score() {
+    this.stores.dispatch(decreaseScore());
+  }
+
+  increase_rating() {
+    this.stores.dispatch(increaseRating());
+  }
+  decrease_rating() {
+    this.stores.dispatch(decreaseRating());
   }
 }
