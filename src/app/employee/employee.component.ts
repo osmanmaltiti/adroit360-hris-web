@@ -76,6 +76,7 @@ export class EmployeeComponent implements OnInit {
   onLogout() {
     localStorage.removeItem('uid');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.router.navigate(['/']);
   }
 }

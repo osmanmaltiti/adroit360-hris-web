@@ -25,6 +25,7 @@ export class ManagerAuthComponent implements OnInit {
           if (status === 'success') {
             localStorage.setItem('token', data.token);
             localStorage.setItem('uid', data.uid);
+            localStorage.setItem('role', 'manager');
           }
           this.router.navigate(['/manager']);
         },

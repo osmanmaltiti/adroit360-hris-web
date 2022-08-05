@@ -24,6 +24,7 @@ export class EmployeeAuthComponent implements OnInit {
           if (status === 'success') {
             localStorage.setItem('token', data.token);
             localStorage.setItem('uid', data.uid);
+            localStorage.setItem('role', 'employee');
           }
           this.router.navigate(['/employee']);
         },

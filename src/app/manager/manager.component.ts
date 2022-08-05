@@ -45,6 +45,7 @@ export class ManagerComponent implements OnInit {
   onLogout() {
     localStorage.removeItem('uid');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.router.navigate(['/auth_manager']);
   }
 }
