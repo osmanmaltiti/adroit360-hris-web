@@ -1,9 +1,9 @@
 <main
   *ngIf="open"
-  class="fixed w-screen h-screen bg-[#0000004f] top-0 left-0 z-20"
+  class="fixed w-screen grid h-screen bg-[#0000004f] top-0 left-0 z-20"
 >
   <section
-    class="bg-white flex-col flex w-full h-full lg:max-w-[600px] m-auto lg:max-h-[600px] p-2 lg:p-6 overflow-y-auto scrollbar-thin xl:scrollbar-thumb-gray-500 lg:rounded-md"
+    class="bg-white flex-col flex w-full h-full lg:max-w-[600px] m-auto lg:max-h-[600px] p-2 lg:p-6 overflow-y-auto scrollbar-thin xl:scrollbar-thumb-gray-500 radius lg:rounded-md"
   >
     <nav class="flex flex-row justify-between text-xl">
       <h1 class="font-semibold">{{ feedback.objectiveType | uppercase }}</h1>
