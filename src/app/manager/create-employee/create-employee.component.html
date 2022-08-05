@@ -2,12 +2,12 @@
   <form
     (ngSubmit)="onSubmit()"
     #formRef="ngForm"
-    class="w-[80%] max-w-[400px] h-[70%] max-h-[480px] m-auto flex flex-col justify-evenly shadow-xl border border-gray-100 p-4"
+    class="w-[80%] max-w-[400px] gap-2 m-auto flex flex-col justify-evenly shadow-xl border border-gray-100 p-4"
   >
     <h1 class="text-4xl italic font-semibold mx-auto text-primary-dark-blue">
       HRIS
     </h1>
-    <h2 class="text-lg mx-auto">CREATE EMPLOYEE</h2>
+    <h2 class="text-lg mx-auto font-semibold">CREATE EMPLOYEE</h2>
     <label for="name">Full Name</label>
     <input
       ngModel

@@ -21,7 +21,7 @@
           data-icon="carbon:user-avatar-filled"
         ></span>
         <ul class="flex flex-col overflow-ellipsis">
-          <li class="font-medium">AUGUST 8, 2022</li>
+          <li class="font-medium">{{ date | date | uppercase }}</li>
           <li class="flex flex-row gap-2">
             <p>Name:</p>
             <p class="font-medium">{{ profile.fullname | uppercase }}</p>

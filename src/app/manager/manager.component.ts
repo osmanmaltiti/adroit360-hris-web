@@ -18,6 +18,7 @@ export class ManagerComponent implements OnInit {
     history: [],
   };
   viewEmployees: boolean = false;
+  date: number = Date.now();
 
   ngOnInit(): void {
     this.onGetReviews();
