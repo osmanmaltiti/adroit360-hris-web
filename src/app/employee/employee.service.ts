@@ -9,7 +9,10 @@ export class EmployeeService {
     return this.http.get<{ status: string; data: Array<any> }>(
       'http://localhost:5000/api/v1/goal/get_goals',
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }
@@ -18,7 +21,10 @@ export class EmployeeService {
     return this.http.get<{ status: string; data: any }>(
       'http://localhost:5000/api/v1/user/get_profile',
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }
@@ -27,7 +33,10 @@ export class EmployeeService {
     return this.http.get<{ status: string; data: any }>(
       'http://localhost:5000/api/v1/goal/get_feedback',
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }

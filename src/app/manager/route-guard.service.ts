@@ -23,8 +23,9 @@ export class ManagerRouteGuardService implements CanActivate {
     return new Promise((resolve, reject) => {
       if (typeof window !== 'undefined') {
         const token = String(localStorage.getItem('token'));
+        const role = String(localStorage.getItem('role'));
 
-        if (token) {
+        if (token && role === 'manager') {
           resolve(true);
         } else {
           this.router.navigate(['/auth_manager']);

@@ -13,6 +13,7 @@ import { EmployeeService } from './employee.service';
 export class EmployeeComponent implements OnInit {
   newPerformanceGoal: boolean = false;
   newDevGoal: boolean = false;
+  date: number = Date.now();
 
   goals: any[] = [];
   feedbacks: number = 0;

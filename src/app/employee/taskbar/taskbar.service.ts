@@ -10,7 +10,10 @@ export class TaskbarService {
       'http://localhost:5000/api/v1/goal/complete_goal',
       { data: { id: data._id, type: data.type } },
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }
@@ -20,7 +23,10 @@ export class TaskbarService {
       'http://localhost:5000/api/v1/goal/submit_review',
       { data },
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }

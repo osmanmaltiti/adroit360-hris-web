@@ -11,7 +11,10 @@ export class CreatePerformanceService {
       'http://localhost:5000/api/v1/goal/create_performance_goal',
       { performanceGoal: objectiveData },
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }

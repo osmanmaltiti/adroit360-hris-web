@@ -9,7 +9,10 @@ export class ManagerService {
     return this.http.get<{ status: string; data: Array<any> }>(
       'http://localhost:5000/api/v1/manager/get_reviews',
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }
@@ -18,7 +21,10 @@ export class ManagerService {
     return this.http.get<{ status: string; data: any }>(
       'http://localhost:5000/api/v1/manager/get_profile',
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }

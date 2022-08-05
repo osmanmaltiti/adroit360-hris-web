@@ -11,7 +11,10 @@ export class CreateDevelopmentService {
       'http://localhost:5000/api/v1/goal/create_development_goal',
       { developmentGoal: objectiveData },
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }

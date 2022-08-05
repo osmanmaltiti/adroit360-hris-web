@@ -17,7 +17,10 @@ export class CreateEmployeeService {
       'http://localhost:5000/api/v1/user/signup',
       { ...signupData },
       {
-        headers: new HttpHeaders({ uid: String(localStorage.getItem('uid')) }),
+        headers: new HttpHeaders({
+          uid: String(localStorage.getItem('uid')),
+          authorization: 'Bearer' + ' ' + String(localStorage.getItem('token')),
+        }),
       }
     );
   }
