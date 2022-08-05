@@ -46,7 +46,7 @@ export class TaskbarComponent implements OnInit {
 
   onReviewSubmit(objective: IGoal) {
     this.taskbarService.onReviewSubmit(objective).subscribe({
-      next: (value) => console.log(value),
+      next: () => this.refreshApi.emit(),
     });
   }
 
