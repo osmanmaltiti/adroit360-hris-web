@@ -56,8 +56,6 @@ export class CreateDevelopmentComponent implements OnInit {
           status: 'ongoing',
           data: this.developmentForm.get('comments')?.value,
         },
-        score: 0,
-        rating: 0,
       },
     };
 

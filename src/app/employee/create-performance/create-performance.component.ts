@@ -43,8 +43,6 @@ export class CreatePerformanceComponent implements OnInit {
           status: 'ongoing',
           data: this.performanceForm.get('comments')?.value,
         },
-        score: 0,
-        rating: 0,
       },
     };
     this.createPerformanceService.onCreateObjective(performanceGoal).subscribe({

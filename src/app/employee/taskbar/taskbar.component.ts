@@ -20,8 +20,6 @@ export class TaskbarComponent implements OnInit {
       support: { status: '', data: [] },
       activity: { status: '', data: [] },
       comments: { status: '', data: [] },
-      score: 0,
-      rating: 0,
     },
   };
 

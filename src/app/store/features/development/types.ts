@@ -3,8 +3,6 @@ export interface IDevelopmentGoal {
   support: { status: string; data: string[] };
   activity: { status: string; data: string[] };
   comments: { status: string; data: string[] };
-  score: number;
-  rating: number;
 }
 
 export interface IGoal {

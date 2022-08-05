@@ -36,4 +36,10 @@ export class ViewFeedbackComponent implements OnInit {
       return Object.entries(data.performanceObjective.fields) as [string, any];
     }
   }
+
+  getRatings(data: number) {
+    const stars = Array(Number(data)).fill(1);
+    const noStars = Array(5 - Number(data)).fill(1);
+    return { stars, noStars };
+  }
 }
