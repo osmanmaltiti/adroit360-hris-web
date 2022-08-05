@@ -25,6 +25,21 @@
           <p>OBJECTIVE:</p>
           <p>{{ review.objectiveType | uppercase }}</p>
         </li>
+        <li class="flex flex-row gap-2">
+          <p>STATUS:</p>
+          <p
+            *ngIf="review.appraise === 'true'"
+            class="bg-green-500 px-1 rounded-sm text-white"
+          >
+            APPRAISED
+          </p>
+          <p
+            *ngIf="review.appraise === 'false'"
+            class="bg-yellow-500 px-1 rounded-sm text-white"
+          >
+            PENDING REVIEW
+          </p>
+        </li>
       </ul>
     </header>
     <div class="w-full flex-grow flex flex-col px-2">
@@ -51,7 +66,10 @@
         </ul>
       </span>
     </div>
-    <div class="w-full flex flex-col text-base gap-2 items-center">
+    <div
+      *ngIf="review.appraise === 'false'"
+      class="w-full flex flex-col text-base gap-2 items-center"
+    >
       <div class="w-[95%] justify-between flex flex-row items-center gap-2">
         <p>SCORE:</p>
         <div class="flex flex-row items-center gap-2">
