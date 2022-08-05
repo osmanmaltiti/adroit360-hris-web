@@ -2,7 +2,7 @@
   class="w-screen h-screen flex flex-col scrollbar-thin lg:scrollbar-thumb-primary-dark-gray radius overflow-y-auto"
 >
   <nav
-    class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray flex flex-row justify-between items-center text-white px-2"
+    class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray flex flex-row justify-between items-center text-white px-2 z-10"
   >
     <p class="text-xl font-medium">LINE MANAGER</p>
     <button (click)="onLogout()">
@@ -10,7 +10,7 @@
     </button>
   </nav>
   <section
-    class="w-full max-w-[1024px] shadow-xl mx-auto h-[calc(100vh-3rem)] relative mt-auto lg:px-6 flex flex-col items-center gap-4 pt-2"
+    class="w-full max-w-[1024px] shadow-xl mx-auto flex-grow relative mt-[3rem] lg:px-6 flex flex-col items-center gap-4 pt-2"
   >
     <header
       class="w-[80%] max-w-[500px] h-[13rem] bg-white shadow-xl ring-1 ring-gray-100 rounded relative mt-4 flex flex-col"
@@ -62,11 +62,11 @@
           >
             <p class="capitalize">{{ field[0] }}</p>
             <span
-              class="flex flex-row gap-2"
+              class="flex flex-row gap-2 text-white text-sm bg-green-500 p-1 rounded"
               *ngIf="field[0] === 'development' || field[0] === 'performance'"
             >
               <p>status:</p>
-              <p>{{ field[1].status }}</p>
+              <p class="capitalize">{{ field[1].status }}</p>
             </span>
             <span *ngIf="field[0] === 'score'">{{ review.score }}</span>
             <span *ngIf="field[0] === 'rating'">{{ review.rating }}</span>

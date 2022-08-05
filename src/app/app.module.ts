@@ -23,6 +23,7 @@ import { store } from './store/store';
 import { CreateEmployeeComponent } from './manager/create-employee/create-employee.component';
 import { FeedbackComponent } from './employee/feedback/feedback.component';
 import { ViewFeedbackComponent } from './employee/feedback/view-feedback/view-feedback.component';
+import { CreateManagerComponent } from './auth/manager/create-manager/create-manager.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { ViewFeedbackComponent } from './employee/feedback/view-feedback/view-fe
     CreateEmployeeComponent,
     FeedbackComponent,
     ViewFeedbackComponent,
+    CreateManagerComponent,
   ],
   imports: [
     BrowserModule,

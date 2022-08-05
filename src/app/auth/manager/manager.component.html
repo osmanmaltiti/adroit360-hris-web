@@ -2,7 +2,7 @@
   <form
     (ngSubmit)="onSubmit()"
     #formRef="ngForm"
-    class="w-[80%] max-w-[400px] h-[70%] max-h-[480px] m-auto flex flex-col justify-evenly shadow-xl border border-gray-100 p-4"
+    class="w-[80%] max-w-[400px] h-[70%] lg:h-fit m-auto flex flex-col justify-evenly shadow-xl border border-gray-100 p-4 lg:gap-4"
   >
     <h1 class="text-4xl italic font-semibold mx-auto text-primary-dark-blue">
       HRIS
@@ -42,6 +42,11 @@
     >
       Sign In
     </button>
+    <a
+      [routerLink]="'/auth_manager/signup'"
+      class="underline mt-4 italic mx-auto"
+      >Create manager account</a
+    >
     <a class="mx-auto italic underline" [routerLink]="'/'">Login as Employee</a>
   </form>
 </section>

@@ -69,11 +69,13 @@
 
       <div class="flex flex-col w-full pr-1">
         <p class="text-xl mb-1 font-medium">Review History</p>
-        <ul class="grid grid-cols-history border border-black">
+        <ul
+          class="grid grid-cols-history text-white rounded py-1 bg-primary-dark-gray"
+        >
           <li></li>
-          <li class="px-1 border-x border-black">Name</li>
-          <li class="px-1 border-r border-black">Role</li>
-          <li class="px-1 mx-auto">Score</li>
+          <li class="px-1">Name</li>
+          <li class="px-1">Objective Type</li>
+          <li class="mx-auto">Score</li>
         </ul>
         <!-- history card -->
         <app-history-card

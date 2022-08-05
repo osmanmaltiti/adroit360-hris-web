@@ -14,7 +14,7 @@ module.exports = {
         "primary-light-brown": "#B1A296",
       },
       gridTemplateColumns: {
-        history: "10% 50% 20% 20%",
+        history: "10% 40% 30% 20%",
       },
     },
   },

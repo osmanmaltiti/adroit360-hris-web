@@ -1,6 +1,6 @@
 <ul
   (click)="viewHistory()"
-  class="grid grid-cols-history py-2 hover:cursor-pointer hover:bg-gray-200 rounded"
+  class="grid grid-cols-history my-1 py-2 hover:cursor-pointer hover:bg-gray-200 rounded"
 >
   <li>
     <span
@@ -9,6 +9,6 @@
     ></span>
   </li>
   <li class="px-1">{{ history.employee | uppercase }}</li>
-  <li class="px-1">Employee</li>
+  <li class="px-1 capitalize">{{ history.objectiveType }}</li>
   <li class="px-1 mx-auto">{{ history.score }}</li>
 </ul>

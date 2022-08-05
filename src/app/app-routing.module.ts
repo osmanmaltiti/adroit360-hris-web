@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { EmployeeAuthComponent } from './auth/employee/employee.component';
+import { CreateManagerComponent } from './auth/manager/create-manager/create-manager.component';
 import { ManagerAuthComponent } from './auth/manager/manager.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { FeedbackComponent } from './employee/feedback/feedback.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: '', component: EmployeeAuthComponent },
       { path: 'auth_manager', component: ManagerAuthComponent },
+      { path: 'auth_manager/signup', component: CreateManagerComponent },
     ],
   },
   {
