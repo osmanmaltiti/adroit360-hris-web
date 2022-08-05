@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ManagerService } from './manager.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ManagerService } from './manager.service';
   styleUrls: ['./manager.component.css'],
 })
 export class ManagerComponent implements OnInit {
-  constructor(private managerService: ManagerService) {}
+  constructor(private managerService: ManagerService, private router: Router) {}
 
   reviews: any[] = [];
   profile = {
@@ -39,5 +40,11 @@ export class ManagerComponent implements OnInit {
 
   onViewEmployees() {
     this.viewEmployees = !this.viewEmployees;
+  }
+
+  onLogout() {
+    localStorage.removeItem('uid');
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth_manager']);
   }
 }

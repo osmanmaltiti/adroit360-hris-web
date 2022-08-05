@@ -1,0 +1,39 @@
+<main
+  *ngIf="open"
+  class="fixed w-screen h-screen bg-[#0000004f] top-0 left-0 z-20"
+>
+  <section
+    class="bg-white flex-col flex w-full h-full lg:max-w-[600px] m-auto lg:max-h-[600px] p-2 lg:p-6 overflow-y-auto scrollbar-thin xl:scrollbar-thumb-gray-500 lg:rounded-md"
+  >
+    <nav class="flex flex-row justify-between text-xl">
+      <h1>{{ "new performance objective" | uppercase }}</h1>
+      <button class="text-2xl" (click)="onClose()">
+        <span class="iconify" data-icon="eva:close-fill"></span>
+      </button>
+    </nav>
+    <div class="w-full flex-grow flex flex-col px-2">
+      <span class="w-full flex flex-col gap-4">
+        <ul
+          *ngFor="let field of getEntries(feedback)"
+          class="flex flex-col justify-between bg-gray-300 p-1"
+        >
+          <li
+            class="w-full flex-row flex text-base font-medium justify-between"
+          >
+            <p class="capitalize">{{ field[0] }}</p>
+            <span
+              class="flex flex-row gap-2"
+              *ngIf="field[0] === 'development' || field[0] === 'performance'"
+            >
+              <p>status:</p>
+              <p>{{ field[1].status }}</p>
+            </span>
+            <span *ngIf="field[0] === 'score'">{{ feedback.score }}</span>
+            <span *ngIf="field[0] === 'rating'">{{ feedback.rating }}</span>
+          </li>
+          <li *ngFor="let activity of field[1].data">- {{ activity }}</li>
+        </ul>
+      </span>
+    </div>
+  </section>
+</main>

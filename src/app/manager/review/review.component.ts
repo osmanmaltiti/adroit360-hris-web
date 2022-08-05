@@ -64,4 +64,10 @@ export class ReviewComponent implements OnInit {
   decrease_rating() {
     this.stores.dispatch(decreaseRating());
   }
+
+  onLogout() {
+    localStorage.removeItem('uid');
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth_manager']);
+  }
 }

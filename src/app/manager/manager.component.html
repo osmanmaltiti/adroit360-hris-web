@@ -1,5 +1,12 @@
 <main class="w-screen h-screen flex flex-col">
-  <nav class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray"></nav>
+  <nav
+    class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray flex flex-row justify-between items-center text-white px-2"
+  >
+    <p class="text-xl font-medium">LINE MANAGER</p>
+    <button (click)="onLogout()">
+      <span class="iconify text-2xl" data-icon="teenyicons:logout-solid"></span>
+    </button>
+  </nav>
   <section
     class="w-full h-[calc(100vh-3rem)] relative mt-auto overflow-y-auto pl-1 lg:px-4 scrollbar-thin lg:scrollbar-thumb-black flex flex-col gap-4 pt-2"
   >

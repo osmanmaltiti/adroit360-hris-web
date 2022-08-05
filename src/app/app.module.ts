@@ -21,6 +21,8 @@ import { ReviewCardComponent } from './manager/review-card/review-card.component
 import { ReviewComponent } from './manager/review/review.component';
 import { store } from './store/store';
 import { CreateEmployeeComponent } from './manager/create-employee/create-employee.component';
+import { FeedbackComponent } from './employee/feedback/feedback.component';
+import { ViewFeedbackComponent } from './employee/feedback/view-feedback/view-feedback.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,8 @@ import { CreateEmployeeComponent } from './manager/create-employee/create-employ
     ManagerPopupComponent,
     ReviewComponent,
     CreateEmployeeComponent,
+    FeedbackComponent,
+    ViewFeedbackComponent,
   ],
   imports: [
     BrowserModule,

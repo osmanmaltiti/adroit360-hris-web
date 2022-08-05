@@ -1,0 +1,48 @@
+<main class="w-screen h-screen flex flex-col">
+  <nav
+    class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray flex flex-row justify-between items-center text-white px-2"
+  >
+    <p class="text-xl font-medium">EMPLOYEE</p>
+    <div class="flex flex-row items-center gap-4">
+      <div class="relative">
+        <span class="iconify text-2xl" data-icon="ic:round-feedback"></span>
+        <p
+          class="absolute -top-1 -right-1 bg-red-600 w-5 h-5 leading-5 text-center rounded-full"
+        ></p>
+      </div>
+      <button (click)="onLogout()">
+        <span
+          class="iconify text-2xl"
+          data-icon="teenyicons:logout-solid"
+        ></span>
+      </button>
+    </div>
+  </nav>
+  <section
+    class="w-full h-[calc(100vh-3rem)] relative mt-auto overflow-y-auto px-1 lg:px-4 scrollbar-thin lg:scrollbar-thumb-primary-dark-gray radius flex flex-col gap-4 pt-2"
+  >
+    <p class="text-lg font-medium">REVIEW FEEDBACKS</p>
+    <div class="w-full flex flex-col px-2 gap-4">
+      <div
+        *ngFor="let feedback of feedbacks"
+        class="w-full flex flex-row items-center justify-between bg-gray-200 p-1 rounded"
+      >
+        <ul class="flex flex-col items-start">
+          <li class="font-medium">{{ feedback.objectiveType | uppercase }}</li>
+          <li>AUGUST 8, 2022</li>
+          <li class="bg-green-500 px-1 rounded-sm text-white">REVIEWED</li>
+        </ul>
+        <button
+          (click)="onViewFeedback(feedback)"
+          class="bg-primary-dark-blue text-white px-6 py-1 rounded"
+        >
+          View
+        </button>
+      </div>
+    </div>
+  </section>
+  <app-view-feedback
+    [open]="viewModal"
+    (close)="onSetView()"
+  ></app-view-feedback>
+</main>

@@ -1,5 +1,25 @@
 <main class="w-screen h-screen flex flex-col">
-  <nav class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray"></nav>
+  <nav
+    class="w-full fixed top-0 h-[3rem] bg-primary-dark-gray flex flex-row justify-between items-center text-white px-2"
+  >
+    <p class="text-xl font-medium">EMPLOYEE</p>
+    <div class="flex flex-row items-center gap-4">
+      <a [routerLink]="'/employee/feedback'" class="relative">
+        <span class="iconify text-2xl" data-icon="ic:round-feedback"></span>
+        <p
+          class="absolute -top-1 -right-1 bg-red-600 w-5 h-5 leading-5 text-center rounded-full"
+        >
+          {{ feedbacks }}
+        </p>
+      </a>
+      <button (click)="onLogout()">
+        <span
+          class="iconify text-2xl"
+          data-icon="teenyicons:logout-solid"
+        ></span>
+      </button>
+    </div>
+  </nav>
   <section
     class="w-full h-[calc(100vh-3rem)] relative mt-auto overflow-y-auto pl-1 lg:px-4 scrollbar-thin lg:scrollbar-thumb-primary-dark-gray radius flex flex-col gap-4 pt-2"
   >
@@ -15,15 +35,15 @@
           <li class="font-medium">AUGUST 8, 2022</li>
           <li class="flex flex-row gap-2">
             <p>Name:</p>
-            <p class="font-medium">TRAFALGAR D WATER LAW</p>
+            <p class="font-medium">{{ profile.fullname | uppercase }}</p>
           </li>
           <li class="flex flex-row gap-2">
             <p>Role:</p>
-            <p class="font-medium">EMPLOYEE</p>
+            <p class="font-medium">{{ profile.role | uppercase }}</p>
           </li>
           <li class="flex flex-row gap-2">
             <p>Line Manager:</p>
-            <p class="font-medium">CHARLOTTE LINLIN</p>
+            <p class="font-medium">{{ profile.manager | uppercase }}</p>
           </li>
         </ul>
       </div>
@@ -47,15 +67,12 @@
       </div>
     </header>
     <div
-      class="h-full flex flex-col z-10 rounded-t-md bg-white gap-6 pt-6 pb-2"
+      class="h-full flex flex-col z-10 rounded-t-md bg-white gap-2 pt-6 pb-2"
     >
-      <select class="w-fit ring-1 ring-black focus:outline-0">
-        <option>Filter</option>
-        <option>Performance</option>
-        <option>Development</option>
-      </select>
+      <h1 class="text-lg font-medium">ACTIVE OBJECTIVES</h1>
       <div class="w-full flex flex-col gap-6 h-full">
         <!-- task component -->
+        <p *ngIf="goals.length === 0" class="mx-auto">No active objectives</p>
         <app-taskbar
           *ngFor="let goal of goals"
           [data]="goal"
