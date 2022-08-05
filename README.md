@@ -1,27 +1,48 @@
-# HrisWeb
+STACK USED:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+- FRONTEND -:
+  - Angular
+  - Ngrx
+  - Tailwindcss
+- BACKEND -:
+  - NodeJS/ExpressJS
+- DATABASE
+  - MongoDB
 
-## Development server
+Route: '/'
+Maps to the login page to the employee module
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Route: '/auth_manager'
+Maps to the login page to the manager module
 
-## Code scaffolding
+Route: '/auth_manager/signup'
+Signup page for a line manager
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Route: '/employee'
 
-## Build
+- Maps to the employee module's dashboard
+- Development and Performance Goal buttons opens a modal from creating new objectives
+- ACTIVE OBJECTIVES
+  - shows active objectives created
+  - user must complete objective before submission for appraisal
+  - deletes on successful submission
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Route: '/employee/feedback'
 
-## Running unit tests
+- Notification icon on the navbar of the employee dashboard
+- Shows appraised submission sent back by the line manager
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Route: '/manager'
 
-## Running end-to-end tests
+- Maps to the manager module's dashboard
+- View Employee buttons opens a modal for viewing employees under current manager
+- PENDING REVIEWS
+  - shows unreviewed submission from employees
+  - manager must score and rate submission
+  - deletes on successful appraisal
+- REVIEW HISTORY
+  - shows history of all reviewed submission
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Route: '/manager/review'
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- page review and appraisal

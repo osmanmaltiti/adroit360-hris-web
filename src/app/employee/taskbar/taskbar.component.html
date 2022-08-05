@@ -7,7 +7,17 @@
     [ngClass]="{ dev: objective.type === 'development goal' }"
     class="sticky left-0 h-[15rem] text-white bg-primary-light-blue p-2 z-10 flex flex-col justify-between"
   >
-    <p class="text-center">{{ objective.type | uppercase }}</p>
+    <p class="text-center font-medium">{{ objective.type | uppercase }}</p>
+    <span
+      *ngIf="objective.type === 'performance goal'"
+      class="iconify mx-auto text-5xl"
+      data-icon="eos-icons:performance"
+    ></span>
+    <span
+      *ngIf="objective.type === 'development goal'"
+      class="iconify mx-auto text-5xl"
+      data-icon="ic:baseline-self-improvement"
+    ></span>
     <button
       (click)="onReviewSubmit(objective)"
       [disabled]="canSubmit(objective)"
@@ -20,7 +30,7 @@
     <button
       (click)="setPopup(); setPopupData(goals)"
       [ngClass]="{ 'dev-card': objective.type === 'development goal' }"
-      class="w-[15rem] h-[15rem] overflow-y-hidden p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col xl:gap-2 relative"
+      class="w-[15rem] h-[15rem] overflow-y-hidden p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col xl:gap-2 relative hover:scale-[1.01]"
     >
       <p class="mx-auto font-medium">{{ goals[0] | uppercase }}</p>
       <!-- others -->
