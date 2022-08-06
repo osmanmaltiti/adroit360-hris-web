@@ -1,6 +1,9 @@
 <!-- POPUP -->
 <section
+  #dialogRef
+  (close)="onClose()"
   *ngIf="popupDisplay"
+  [appClickOutside]="dialogRef"
   class="fixed w-screen h-screen bg-[#0000004f] top-0 left-0 z-20 flex flex-col items-center"
 >
   <div

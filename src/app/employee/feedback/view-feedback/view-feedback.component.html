@@ -1,5 +1,8 @@
 <main
+  #dialogRef
   *ngIf="open"
+  (close)="onClose()"
+  [appClickOutside]="dialogRef"
   class="fixed w-screen grid h-screen bg-[#0000004f] top-0 left-0 z-20"
 >
   <section
@@ -20,7 +23,7 @@
           <li
             class="w-full flex-row flex text-base font-medium justify-between"
           >
-            <p class="capitalize">{{ field[0] }}</p>
+            <p class="capitalize">{{ field[0] | transform_name }}</p>
             <span
               class="flex flex-row gap-2 bg-green-500 px-1 rounded text-white"
               *ngIf="field[0] === 'development' || field[0] === 'performance'"
@@ -29,10 +32,16 @@
               <p>{{ field[1].status }}</p>
             </span>
           </li>
-          <li *ngFor="let activity of field[1].data">- {{ activity }}</li>
+          <li *ngFor="let activity of field[1].data">
+            <span class="flex flex-row items-center pl-1 gap-1">
+              <p class="w-1 h-1 rounded-full bg-black"></p>
+              <p>{{ activity }}</p>
+            </span>
+          </li>
         </ul>
 
         <span
+          [ngClass]="{ dev: feedback.objectiveType === 'development goal' }"
           class="flex flex-col lg:w-[13rem] w-[10rem] rounded lg:h-[13rem] h-[10rem] p-1 mx-auto bg-primary-dark-blue text-white"
         >
           <h1 class="text-base font-medium">Score</h1>
@@ -40,6 +49,7 @@
         </span>
 
         <span
+          [ngClass]="{ dev: feedback.objectiveType === 'development goal' }"
           class="flex flex-col lg:w-[13rem] w-[10rem] rounded lg:h-[13rem] h-[10rem] p-1 mx-auto bg-primary-dark-blue text-white"
         >
           <h1 class="text-base font-medium">Rating</h1>

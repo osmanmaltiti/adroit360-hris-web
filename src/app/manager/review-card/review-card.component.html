@@ -1,8 +1,18 @@
 <button
   (click)="dispatchReview(review)"
   [ngClass]="{ perf: review.objectiveType === 'performance goal' }"
-  class="w-[13rem] h-[13rem] bg-primary-dark-blue text-white rounded flex-shrink-0 py-2 flex flex-col hover:scale-[1.01]"
+  class="w-[13rem] h-[13rem] bg-primary-dark-blue text-white rounded flex-shrink-0 py-2 flex flex-col hover:scale-[1.01] relative"
 >
+  <span
+    *ngIf="review.objectiveType === 'performance goal'"
+    class="iconify mx-auto text-2xl absolute top-1 left-1"
+    data-icon="eos-icons:performance"
+  ></span>
+  <span
+    *ngIf="review.objectiveType === 'development goal'"
+    class="iconify mx-auto text-3xl absolute top-1 left-1"
+    data-icon="ic:baseline-self-improvement"
+  ></span>
   <span
     class="iconify mx-auto text-[6rem]"
     data-icon="carbon:user-avatar-filled"

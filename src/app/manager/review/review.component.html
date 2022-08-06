@@ -24,27 +24,27 @@
       >
         <li class="flex flex-row gap-2">
           <p>NAME:</p>
-          <p>{{ review.employee | uppercase }}</p>
+          <p class="font-medium">{{ review.employee | uppercase }}</p>
         </li>
         <li class="flex flex-row gap-2">
           <p>ROLE:</p>
-          <p>EMPLOYEE</p>
+          <p class="font-medium">EMPLOYEE</p>
         </li>
         <li class="flex flex-row gap-2">
           <p>OBJECTIVE:</p>
-          <p>{{ review.objectiveType | uppercase }}</p>
+          <p class="font-medium">{{ review.objectiveType | uppercase }}</p>
         </li>
         <li class="flex flex-row gap-2">
           <p>STATUS:</p>
           <p
             *ngIf="review.appraise === 'true'"
-            class="bg-green-500 px-1 rounded-sm text-white"
+            class="bg-green-500 px-1 rounded-sm text-white font-medium"
           >
             APPRAISED
           </p>
           <p
             *ngIf="review.appraise === 'false'"
-            class="bg-yellow-500 px-1 rounded-sm text-white"
+            class="bg-yellow-500 px-1 rounded-sm text-white font-medium"
           >
             PENDING REVIEW
           </p>
@@ -60,7 +60,7 @@
           <li
             class="w-full flex-row flex text-base font-medium justify-between"
           >
-            <p class="capitalize">{{ field[0] }}</p>
+            <p class="capitalize">{{ field[0] | transform_name }}</p>
             <span
               class="flex flex-row gap-2 text-white text-sm bg-green-500 p-1 rounded"
               *ngIf="field[0] === 'development' || field[0] === 'performance'"
@@ -71,7 +71,12 @@
             <span *ngIf="field[0] === 'score'">{{ review.score }}</span>
             <span *ngIf="field[0] === 'rating'">{{ review.rating }}</span>
           </li>
-          <li *ngFor="let activity of field[1].data">- {{ activity }}</li>
+          <li *ngFor="let activity of field[1].data">
+            <span class="flex flex-row items-center pl-1 gap-1">
+              <p class="w-1 h-1 rounded-full bg-black"></p>
+              <p>{{ activity }}</p>
+            </span>
+          </li>
         </ul>
       </span>
     </div>

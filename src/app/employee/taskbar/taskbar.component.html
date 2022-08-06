@@ -1,11 +1,11 @@
 <div
   [ngClass]="{ 'dev-border': objective.type === 'development goal' }"
-  class="w-full relative overflow-x-auto scrollbar-thin lg:scrollbar-thumb-primary-dark-gray radius rounded-l-md lg:rounded-r-md border-2 xl:border-r-2 border-r-0 border-primary-light-blue pr-2 py-4 gap-4 flex flex-row flex-nowrap text-white mb-4"
+  class="w-full relative overflow-x-auto scrollbar-thin lg:scrollbar-thumb-primary-dark-gray radius rounded-l-md lg:rounded-r-md border-2 xl:border-r-2 border-r-0 border-primary-light-blue lg:pr-2 py-4 flex flex-row flex-nowrap text-white mb-4"
 >
   <!-- TASK DETAILS -->
   <div
     [ngClass]="{ dev: objective.type === 'development goal' }"
-    class="sticky left-0 h-[15rem] text-white bg-primary-light-blue p-2 z-10 flex flex-col justify-between"
+    class="sticky left-0 h-[15rem] text-white bg-primary-light-blue p-2 mr-2 z-10 flex flex-col justify-between"
   >
     <p class="text-center font-medium">{{ objective.type | uppercase }}</p>
     <span
@@ -26,19 +26,24 @@
       Submit
     </button>
   </div>
-  <span *ngFor="let goals of getEntries(objective.fields)">
+  <span *ngFor="let goals of getEntries(objective.fields)" class="mx-2">
     <button
       (click)="setPopup(); setPopupData(goals)"
       [ngClass]="{ 'dev-card': objective.type === 'development goal' }"
-      class="w-[15rem] h-[15rem] overflow-y-hidden p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col xl:gap-2 relative hover:scale-[1.01]"
+      class="w-[15rem] lg:w-[17rem] h-[15rem] overflow-y-hidden p-2 flex-shrink-0 bg-primary-light-brown rounded flex flex-col xl:gap-2 relative hover:scale-[1.01]"
     >
-      <p class="mx-auto font-medium">{{ goals[0] | uppercase }}</p>
+      <p class="mx-auto font-medium bg-white text-black w-full rounded">
+        {{ goals[0] | transform_name | uppercase }}
+      </p>
       <!-- others -->
       <ul
         *ngIf="goals[0] !== 'score' && goals[0] !== 'ratings'"
         class="w-full flex flex-col mt-4 gap-2"
       >
-        <li *ngFor="let x of goals[1].data" class="border-b border-white">
+        <li
+          *ngFor="let x of goals[1].data"
+          class="border-b border-white text-left"
+        >
           {{ x }}
         </li>
       </ul>
