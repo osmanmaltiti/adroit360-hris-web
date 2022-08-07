@@ -79,6 +79,7 @@
           *ngFor="let goal of goals"
           [data]="goal"
           (refresh)="onGetObjectives()"
+          (alert)="onAlert()"
         ></app-taskbar>
       </div>
     </div>
@@ -95,4 +96,10 @@
     [setOpen]="newDevGoal"
     (close)="setOpen('dev')"
   ></app-create-development>
+
+  <app-alert
+    [alert]="alert"
+    [message]="alertMessage"
+    [type]="'success'"
+  ></app-alert>
 </main>

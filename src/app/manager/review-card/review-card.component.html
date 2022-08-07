@@ -18,6 +18,8 @@
     data-icon="carbon:user-avatar-filled"
   ></span>
   <p class="mx-auto italic">from</p>
-  <p class="mx-auto text-base">{{ review.employee | uppercase }}</p>
-  <p class="mx-auto mt-3 capitalize">{{ review.objectiveType }}</p>
+  <p class="mx-auto text-lg">{{ review.employee | uppercase }}</p>
+  <p class="mx-auto mt-3 capitalize bg-white rounded text-black px-2">
+    {{ review.objectiveType }}
+  </p>
 </button>

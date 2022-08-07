@@ -20,6 +20,10 @@ export class ManagerComponent implements OnInit {
   viewEmployees: boolean = false;
   date: number = Date.now();
 
+  alertMessage: string = '';
+  alert: boolean = false;
+  alertTimeout: any;
+
   ngOnInit(): void {
     this.onGetReviews();
     this.onGetProfile();

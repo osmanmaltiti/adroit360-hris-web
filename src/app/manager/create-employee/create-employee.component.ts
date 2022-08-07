@@ -10,6 +10,10 @@ import { CreateEmployeeService } from './create-employee.service';
 })
 export class CreateEmployeeComponent implements OnInit {
   @ViewChild('formRef') employeeForm: NgForm | undefined;
+  alertMessage: string = '';
+  alert: boolean = false;
+  alertTimeout: any;
+
   constructor(
     private createEmployeeService: CreateEmployeeService,
     private router: Router
@@ -27,7 +31,13 @@ export class CreateEmployeeComponent implements OnInit {
               this.router.navigate(['/manager']);
             }
           },
-          error: (err) => console.log(err),
+          error: ({ error }) => {
+            this.alertMessage = error.message;
+            this.alert = true;
+            this.alertTimeout = setTimeout(() => {
+              this.alert = false;
+            }, 3000);
+          },
         });
     }
   }

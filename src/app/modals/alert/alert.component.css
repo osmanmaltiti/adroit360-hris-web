@@ -1,0 +1,8 @@
+.open {
+  height: 5rem;
+  transition: linear 150ms;
+}
+
+.success {
+  border-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}

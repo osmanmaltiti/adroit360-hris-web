@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeLoginService } from './login.service';
@@ -8,12 +8,16 @@ import { EmployeeLoginService } from './login.service';
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css'],
 })
-export class EmployeeAuthComponent implements OnInit {
-  @ViewChild('formRef') employeeForm: NgForm | undefined;
+export class EmployeeAuthComponent implements OnInit, OnDestroy {
   constructor(
     private loginService: EmployeeLoginService,
     private router: Router
   ) {}
+
+  @ViewChild('formRef') employeeForm: NgForm | undefined;
+  alertMessage: string = '';
+  alert: boolean = false;
+  alertTimeout: any;
 
   ngOnInit(): void {}
 
@@ -28,8 +32,18 @@ export class EmployeeAuthComponent implements OnInit {
           }
           this.router.navigate(['/employee']);
         },
-        error: (err) => console.log(err),
+        error: ({ error }) => {
+          this.alertMessage = error.message;
+          this.alert = true;
+          this.alertTimeout = setTimeout(() => {
+            this.alert = false;
+          }, 3000);
+        },
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.alertTimeout);
   }
 }

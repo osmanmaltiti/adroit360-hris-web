@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import {
+  removeAlert,
+  setAlert,
+} from 'src/app/store/features/alert/alert.reducers';
 import {
   decreaseRating,
   decreaseScore,
@@ -25,6 +29,7 @@ export class ReviewComponent implements OnInit {
     private router: Router
   ) {}
 
+  @Output('alert') alert: EventEmitter<any> = new EventEmitter();
   review: IReview = initialState;
 
   ngOnInit(): void {
@@ -47,7 +52,13 @@ export class ReviewComponent implements OnInit {
   onAppraiseReview() {
     this.stores.dispatch(setAppraise({ payload: 'true' }));
     this.reviewService.onAppraiseReview(this.review).subscribe({
-      next: () => this.router.navigate(['/manager']),
+      next: () => {
+        this.stores.dispatch(
+          setAlert({ payload: 'feedback sent successfully' })
+        );
+        setTimeout(() => this.stores.dispatch(removeAlert()), 3000);
+        this.router.navigate(['/manager']);
+      },
     });
   }
 

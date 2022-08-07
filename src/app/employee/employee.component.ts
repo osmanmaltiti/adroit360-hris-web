@@ -23,6 +23,10 @@ export class EmployeeComponent implements OnInit {
     manager: '',
   };
 
+  alertMessage: string = '';
+  alert: boolean = false;
+  alertTimeout: any;
+
   constructor(
     private employeeService: EmployeeService,
     private stores: Store<typeof store>,
@@ -79,5 +83,13 @@ export class EmployeeComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     this.router.navigate(['/']);
+  }
+
+  onAlert() {
+    this.alert = true;
+    this.alertMessage = 'review submitted successfully';
+    this.alertTimeout = setTimeout(() => {
+      this.alert = false;
+    }, 2000);
   }
 }

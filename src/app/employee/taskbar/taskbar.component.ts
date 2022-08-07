@@ -13,6 +13,7 @@ import { TaskbarService } from './taskbar.service';
 })
 export class TaskbarComponent implements OnInit {
   @Output('refresh') refreshApi: EventEmitter<any> = new EventEmitter();
+  @Output('alert') alert: EventEmitter<any> = new EventEmitter();
   @Input('data') objective: IGoal = {
     type: 'performance goal',
     fields: {
@@ -46,7 +47,10 @@ export class TaskbarComponent implements OnInit {
 
   onReviewSubmit(objective: IGoal) {
     this.taskbarService.onReviewSubmit(objective).subscribe({
-      next: () => this.refreshApi.emit(),
+      next: () => {
+        this.alert.emit();
+        this.refreshApi.emit();
+      },
     });
   }
 

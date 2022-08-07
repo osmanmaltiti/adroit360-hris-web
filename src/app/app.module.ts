@@ -26,6 +26,7 @@ import { ReviewCardComponent } from './manager/review-card/review-card.component
 import { ReviewComponent } from './manager/review/review.component';
 import { TransformName } from './pipes/transform-name.pipe';
 import { store } from './store/store';
+import { AlertComponent } from './modals/alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { store } from './store/store';
     CreateManagerComponent,
     ClickOutsideDirective,
     TransformName,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

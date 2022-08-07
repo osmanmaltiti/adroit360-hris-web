@@ -1,0 +1,28 @@
+<div
+  [ngClass]="{ open: open }"
+  class="fixed top-2 left-1/2 -translate-x-1/2 w-[80%] max-w-[700px] h-0 overflow-hidden rounded shadow-lg transition-all z-50"
+>
+  <div
+    [ngClass]="{ success: alertType === 'success' }"
+    class="w-full h-full border-2 border-red-400 bg-white flex flex-col"
+  >
+    <div class="flex flex-row m-auto gap-2 items-center">
+      <span *ngIf="alertType === 'warning'" class="bg-red-400 rounded-full p-1">
+        <span
+          class="iconify text-2xl text-white"
+          data-icon="ant-design:stop-outlined"
+        ></span>
+      </span>
+      <span
+        *ngIf="alertType === 'success'"
+        class="bg-green-400 rounded-full p-1"
+      >
+        <span
+          class="iconify text-2xl text-white"
+          data-icon="carbon:thumbs-up"
+        ></span>
+      </span>
+      <p class="capitalize">{{ message }}</p>
+    </div>
+  </div>
+</div>

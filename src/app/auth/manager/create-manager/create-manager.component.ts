@@ -10,6 +10,10 @@ import { CreateManagerService } from './create-manager.service';
 })
 export class CreateManagerComponent implements OnInit {
   @ViewChild('formRef') employeeForm: NgForm | undefined;
+  alertMessage: string = '';
+  alert: boolean = false;
+  alertTimeout: any;
+
   constructor(
     private createManagerService: CreateManagerService,
     private router: Router
@@ -30,7 +34,13 @@ export class CreateManagerComponent implements OnInit {
             }
             this.router.navigate(['/manager']);
           },
-          error: (err) => console.log(err),
+          error: ({ error }) => {
+            this.alertMessage = error.message;
+            this.alert = true;
+            this.alertTimeout = setTimeout(() => {
+              this.alert = false;
+            }, 3000);
+          },
         });
     }
   }
