@@ -1,4 +1,4 @@
-STACK USED:
+💻 STACK USED:
 
 - FRONTEND -:
   - Angular
@@ -8,6 +8,12 @@ STACK USED:
   - NodeJS/ExpressJS
 - DATABASE
   - MongoDB
+
+🎥 LIVE DEMO:
+
+https://hris-web.netlify.app
+
+🔗 ROUTES:
 
 Route: '/'
 Maps to the login page to the employee module
