@@ -7,7 +7,7 @@ export class ManagerService {
 
   onGetPendingReviews() {
     return this.http.get<{ status: string; data: Array<any> }>(
-      'http://localhost:5000/api/v1/manager/get_reviews',
+      'https://adroit-hris-api.herokuapp.com/api/v1/manager/get_reviews',
       {
         headers: new HttpHeaders({
           uid: String(localStorage.getItem('uid')),
@@ -19,7 +19,7 @@ export class ManagerService {
 
   onGetProfile() {
     return this.http.get<{ status: string; data: any }>(
-      'http://localhost:5000/api/v1/manager/get_profile',
+      'https://adroit-hris-api.herokuapp.com/api/v1/manager/get_profile',
       {
         headers: new HttpHeaders({
           uid: String(localStorage.getItem('uid')),

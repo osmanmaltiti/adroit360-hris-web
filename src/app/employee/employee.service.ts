@@ -7,7 +7,7 @@ export class EmployeeService {
 
   onGetGoals() {
     return this.http.get<{ status: string; data: Array<any> }>(
-      'http://localhost:5000/api/v1/goal/get_goals',
+      'https://adroit-hris-api.herokuapp.com/api/v1/goal/get_goals',
       {
         headers: new HttpHeaders({
           uid: String(localStorage.getItem('uid')),
@@ -19,7 +19,7 @@ export class EmployeeService {
 
   onGetProfile() {
     return this.http.get<{ status: string; data: any }>(
-      'http://localhost:5000/api/v1/user/get_profile',
+      'https://adroit-hris-api.herokuapp.com/api/v1/user/get_profile',
       {
         headers: new HttpHeaders({
           uid: String(localStorage.getItem('uid')),
@@ -31,7 +31,7 @@ export class EmployeeService {
 
   onGetFeedback() {
     return this.http.get<{ status: string; data: any }>(
-      'http://localhost:5000/api/v1/goal/get_feedback',
+      'https://adroit-hris-api.herokuapp.com/api/v1/goal/get_feedback',
       {
         headers: new HttpHeaders({
           uid: String(localStorage.getItem('uid')),

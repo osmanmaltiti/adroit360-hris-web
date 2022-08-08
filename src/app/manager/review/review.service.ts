@@ -8,7 +8,7 @@ export class ReviewService {
 
   onAppraiseReview(data: IReview) {
     return this.http.post<{ status: string; data: Array<any> }>(
-      'http://localhost:5000/api/v1/manager/appraise_review',
+      'https://adroit-hris-api.herokuapp.com/api/v1/manager/appraise_review',
       { data },
       {
         headers: new HttpHeaders({

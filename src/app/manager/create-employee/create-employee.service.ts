@@ -14,7 +14,7 @@ export class CreateEmployeeService {
     return this.http.post<{
       status: string;
     }>(
-      'http://localhost:5000/api/v1/user/signup',
+      'https://adroit-hris-api.herokuapp.com/api/v1/user/signup',
       { ...signupData },
       {
         headers: new HttpHeaders({

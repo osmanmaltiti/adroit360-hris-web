@@ -9,6 +9,6 @@ export class ManagerLoginService {
     return this.http.post<{
       status: string;
       data: { uid: string; token: string };
-    }>('http://localhost:5000/api/v1/manager/login', { ...loginData });
+    }>('https://adroit-hris-api.herokuapp.com/api/v1/manager/login', { ...loginData });
   }
 }
